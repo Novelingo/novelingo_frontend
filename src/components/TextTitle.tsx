@@ -1,6 +1,12 @@
+import React from 'react';
 
-export default function TextTitle({children, className}) {
+interface TextProps{
+  children: React.ReactNode;
+  className?: string;
+
+}
+export default function TextTitle({children, className}: TextProps) {
     return (
-      <h1 className={` text-4xl  xl:text-5xl font-display text-white ${className}`}>{children}</h1>
+      <h1 className={` text-4xl  md:text-5xl font-display  ${className}`}>{children}</h1>
     )
   }

@@ -1,5 +1,10 @@
 import AppButton from "./AppButton"
-export default function Genre({genre, title}) {
+
+interface GenreProps{
+  genre: string;
+  title: string;
+}
+export default function Genre({genre, title}: GenreProps) {
   return (
     <div className=' flex flex-col items-center'>
     <img className='w-60' src={genre} alt={title} />
