@@ -16,7 +16,7 @@ export default function AppButton({
   return (
     <button 
       onClick={onClick} 
-      className={`bg-gradient-to-r from-pink to-purple hover:from-light hover:to-light hover:text-purple rounded-xl hover:border hover:border-dark2 text-base text-white ${className}`}>
+      className={`bg-gradient-to-r from-pink to-purple hover:from-light hover:to-light hover:text-purple rounded-xl hover:outline hover:outline-1 hover:outline-purple text-base text-white ${className}`}>
       {children}
     </button>
   );
