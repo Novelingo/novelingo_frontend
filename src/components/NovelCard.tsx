@@ -8,7 +8,7 @@ interface NovelProps{
     rating: number;
     cover: string;
   }
-  export default function Novelcard({genres, title, subtitle, rating, cover}: NovelProps) {
+  export default function NovelCard({genres, title, subtitle, rating, cover}: NovelProps) {
     return (
       <div className='m-4  flex flex-col items-center justify-center w-72 h-96 p-4 text-center rounded' style={{
         backgroundImage:`url(${cover})`,
