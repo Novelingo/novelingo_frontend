@@ -24,7 +24,7 @@ export default function Footer() {
         <div className='text-center underline underline-offset-2 flex flex-col p-4 text-white'>
         {
           Links.map((link)=>(
-              <Link to={link.link} className='mt-4'>{link.name}</Link>
+              <Link key={link.name} to={link.link} className='mt-4'>{link.name}</Link>
           ))
         }
         </div>

@@ -21,7 +21,7 @@ interface NovelProps{
 
         <ul className="flex mb-6 text-pink">
           {genres.map((genre)=>(
-           <li className="outline-dashed outline-2 rounded text-xs mx-2 p-1">{genre}</li>     ))}
+           <li key={genre} className="outline-dashed outline-2 rounded text-xs mx-2 p-1">{genre}</li>     ))}
         </ul>
           
         <div className="flex text-white">
