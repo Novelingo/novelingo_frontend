@@ -55,7 +55,7 @@ export default function Novels() {
 
     <div className='mt-6 flex flex-wrap justify-center ' >
  
-      <div className="sticky left-28">
+      <div className="pr-24">
           {
         filters.map((filter)=>(
           <Filter key={filter.title} title={filter.title} options={filter.options} />
