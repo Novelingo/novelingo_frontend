@@ -1,44 +1,40 @@
 import NovelCard from "../components/NovelCard"
 import bookcover from '../assets/bookcover.png'
 import Filter from "../components/Filter"
-import {AiOutlineSearch} from 'react-icons/ai'
 export default function Novels() {
-  let novels= [
-    {title: 'The Love of a Lifetime',
-    subtitle: "A heart-wrenching tale of love, loss, and second chances, set against the picturesque backdrop of a small English town.",
+  // let novels= [
+  //   {title: 'The Love of a Lifetime',
+  //   subtitle: "A heart-wrenching tale of love, loss, and second chances, set against the picturesque backdrop of a small English town.",
+  //   rating: 4,
+  //   genres: ['English', 'C2', 'Romance', 'Large'],
+  //   cover: bookcover,
+  // },
+  // ]
+  const novels = Array.from({ length: 10 }).map((_, index) => ({
+    title: `The Love of a Lifetime ${index}`,
+    subtitle:
+      "A heart-wrenching tale of love, loss, and second chances, set against the picturesque backdrop of a small English town.",
     rating: 4,
-    genres: ['English', 'C2', 'Romance', 'Large'],
+    genres: ["English", "C2", "Romance", "Large"],
     cover: bookcover,
-  },
-  {title: 'The Love of ca Lifetime',
-  subtitle: "A heart-wrenching tale of love, loss, and second chances, set against the picturesque backdrop of a small English town.",
-  rating: 4,
-  genres: ['English', 'C2', 'Romance', 'Large'],
-  cover: bookcover,
-},
-{title: 'The Love of ac Lifetime',
-subtitle: "A heart-wrenching tale of love, loss, and second chances, set against the picturesque backdrop of a small English town.",
-rating: 4,
-genres: ['English', 'C2', 'Romance', 'Large'],
-cover: bookcover,
-},
-{title: 'The Love of acb Lifetime',
-subtitle: "A heart-wrenching tale of love, loss, and second chances, set against the picturesque backdrop of a small English town.",
-rating: 4,
-genres: ['English', 'C2', 'Romance', 'Large'],
-cover: bookcover,
-},
+  }));
 
-  ]
-
-  let filters = [
-    {title: 'Language', 
+  const filters = Array.from({ length: 10 }).map((_, index) => (   {
+    title: `Filter ${index} `, 
     options: [{id: '1',title: 'French'}, {id: '2', title: 'English'}, {id: '3', title: 'Russian'}]  
-    },
-    {title: 'Genre', 
-    options: [{id: '1',title: 'Adult'}, {id: '2', title: 'English'}, {id: '3', title: 'Russian'}]  
-    }
-  ]
+    } 
+  ));
+
+  // let filters = [
+  //   {title: 'Language', 
+  //   options: [{id: '1',title: 'French'}, {id: '2', title: 'English'}, {id: '3', title: 'Russian'}]  
+  //   },
+  //   {title: 'Genre', 
+  //   options: [{id: '1',title: 'Adult'}, {id: '2', title: 'English'}, {id: '3', title: 'Russian'}]  
+  //   }
+  // ]
+
+
   return (
     <div className="mt-10 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center ">
        
@@ -59,7 +55,7 @@ cover: bookcover,
 
     <div className='mt-6 flex flex-wrap justify-center ' >
  
-      <div className="fixed left-28">
+      <div className="sticky left-28">
           {
         filters.map((filter)=>(
           <Filter key={filter.title} title={filter.title} options={filter.options} />
