@@ -1,5 +1,7 @@
 import TextTitle from "./TextTitle";
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai'
+import React from 'react';
+
 
 interface NovelProps{
     tags: string[];
@@ -7,11 +9,12 @@ interface NovelProps{
     subtitle: string;
     rating: number;
     cover: string;
+    onClick: React.MouseEventHandler<HTMLDivElement>;
 
   }
-  export default function NovelCard({tags, title, subtitle, rating, cover}: NovelProps) {
+  export default function NovelCard({tags, title, subtitle, rating, cover, onClick}: NovelProps) {
     return (
-      <div className='m-4  flex flex-col items-center justify-center w-72 h-96 p-4 text-center rounded' style={{
+      <div onClick={onClick} className='m-4  flex flex-col items-center justify-center w-72 h-96 p-4 text-center rounded' style={{
         backgroundImage:`url(${cover})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',

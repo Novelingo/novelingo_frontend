@@ -32,26 +32,26 @@ export default function Footer() {
         <div  className='p-4'>
 
         <div className='text-light flex flex-col'>
-            <span className='flex justify-cneter items-center'>
+            <span className='flex items-center'>
                 <MdOutlineMail/> <p className='ml-2'>novelingo@gmail.com</p>
             </span>
-            <span className='flex justify-cneter items-center'>
+            <span className='flex items-center'>
                 <FiPhoneCall/> <p className='ml-2'>+994708782013</p>
             </span>
-            <span className='flex justify-cneter items-center'>
+            <span className='flex items-center'>
                 <MdOutlineLocationOn size={20} /> <p className='ml-2'>Baku, Azerbaijan</p>
             </span>
         </div>
 
-        <div className='text-white text-3xl flex ' >
-            <Link className='mr-1 mt-2' to={'/'}>
+        <div className='mt-3 text-white text-3xl flex ' >
+            <Link className='mr-1 ' to={'/'}>
                 <CiFacebook/> 
             </Link >
 
-            <Link className='mr-1 mt-2' to={'/'}>
+            <Link className='mr-1 ' to={'/'}>
                 <CiInstagram/> 
             </Link> 
-            <Link className='mr-1 mt-2' to={'/'}>
+            <Link className='mr-1 ' to={'/'}>
                 <CiLinkedin/> 
             </Link>
             

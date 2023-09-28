@@ -37,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, onPageChange }) => {
         return (
           <button
             key={index}
-            className={`w-8 h-8 text-white outline outline-white outline-2 flex justify-center items-center m-2  ${
+            className={`w-8 h-8 text-white outline  outline-2 flex justify-center items-center m-2  ${
               page === currentPage ? 'outline outline-pink text-white' : ''
             }`}
             onClick={() => handlePageChange(page)}

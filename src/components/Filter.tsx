@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface FilterProps{
-    title: string;
+    title?: string;
     options: {id:string, title:string}[];
 }
 export default function Filter({title, options}:FilterProps) {
@@ -17,7 +17,7 @@ export default function Filter({title, options}:FilterProps) {
     <div className="flex flex-col ">
     {options.map((option)=>{
         const isSelected = selectedIds.includes(option.id)
-       return <div key={option.id} onClick={()=>handleClick(isSelected, option.id)} className={`${isSelected ? 'bg-light text-purple':'bg-gradient-to-r from-pink to-purple text-white'} m-1 w-40 p-4 h-9 flex justify-center items-center rounded`} >
+       return <div key={option.id} onClick={()=>handleClick(isSelected, option.id)} className={`${isSelected ? 'bg-light outline outline-2 text-purple':'bg-gradient-to-r from-pink to-purple text-white'} m-1 md:w-40 p-4 h-9 flex justify-center items-center rounded`} >
         <p>{option.title}</p>
         </div>
 

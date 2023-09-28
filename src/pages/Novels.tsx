@@ -4,10 +4,20 @@ import Filter from "../components/Filter";
 import { useGetNovelsQuery } from "../apis/novelApi";
 import Pagination from '../components/Pagination';
 import { useState } from 'react';
+import Footer from "../components/Footer";
+import { useNavigate } from 'react-router-dom';
 
-
+import Sidebar from "../components/Sidebar";
+import AppButton from "../components/AppButton";
 
 export default function Novels() {
+
+  
+  let navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/Novel');
+  }
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -54,14 +64,16 @@ export default function Novels() {
     },
 
   ]
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
 
 
   return (
-    <div className="mt-10 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center ">
-      <div className="fixed top-16 left-1/2 w-full max-w-screen-xl transform -translate-x-1/2 px-16 2xl:p-0 pt-4 bg-gradient-to-r from-dark1 to-dark2 z-10">
+    <div>
+    <div className="mt-3 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center ">
+      <div className="fixed top-16 left-1/2 w-full z-10 md:z-20 max-w-screen-xl transform -translate-x-1/2 px-16 2xl:p-0 pt-3 bg-gradient-to-r from-dark1 to-dark2 ">
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div className="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-purple"
               aria-hidden="true"
@@ -81,15 +93,15 @@ export default function Novels() {
           <input
             type="search"
             id="default-search"
-            className="w-full text-purple p-3 pl-10 placeholder:text-purple text-base bg-light rounded shadow-sm focus:outline-none sm:text-sm"
+            className="w-full text-purple p-3 pl-10 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
             placeholder="Search novels"
             required
           />
         </div>
       </div>
 
-      <div className="mt-6 md:px-10 px-5 py-10  justify-center  flex">
-        <div className="">
+      <div className="mt-6  md:px-10 px-5 py-10 justify-center  flex">
+        <div className="hidden md:inline-block">
           {filters.map((filter) => (
             <Filter
               key={filter.title}
@@ -97,11 +109,27 @@ export default function Novels() {
               options={filter.options}
             />
           ))}
-        </div>
 
-        <div className="flex flex-wrap justify-end">
+        </div>
+        <div className="flex flex-col">
+      <div  className="pl-6 self-center md:hidden ">
+        <AppButton
+        onClick={() => setSidebarOpen(!isSidebarOpen)}
+        className="px-4 my-2 mt-8 text-xs py-2"
+      > Apply Filter
+      </AppButton>
+    <div className="relative">
+        {isSidebarOpen && <Sidebar filters={filters} onClose={() => setSidebarOpen(false)} />}
+      </div>
+      
+      </div>
+      
+    
+
+        <div className="flex flex-wrap md:justify-end justify-center">
           {novels.map((novel) => (
             <NovelCard
+              onClick={handleClick}
               key={novel.id}
               title={novel.title}
               subtitle={novel.description}
@@ -112,7 +140,7 @@ export default function Novels() {
           ))}
           
         </div>
-        
+      </div>
       </div>
  
           <Pagination 
@@ -120,7 +148,8 @@ export default function Novels() {
       onPageChange={(page) => setCurrentPage(page)}
     />
      
-    
+    <Footer />
+    </div>
     </div>
   );
 }
