@@ -7,6 +7,7 @@ interface NovelProps{
     subtitle: string;
     rating: number;
     cover: string;
+
   }
   export default function NovelCard({tags, title, subtitle, rating, cover}: NovelProps) {
     return (
@@ -20,8 +21,8 @@ interface NovelProps{
         <p className="text-light mb-6 text-sm">{subtitle}</p>
 
         <ul className="flex mb-6 text-pink">
-          {tags.map((genre)=>(
-           <li key={genre} className="outline-dashed outline-2 rounded text-xs mx-2 p-1">{genre}</li>     ))}
+          {tags.map((tag)=>(
+           <li key={tag} className="outline-dashed outline-2 rounded text-xs mx-2 p-1">{tag}</li>     ))}
         </ul>
         <div className="flex items-center text-white">
             <p className="pr-1">{rating}</p>

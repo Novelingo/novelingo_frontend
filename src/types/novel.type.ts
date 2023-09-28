@@ -16,8 +16,6 @@ export interface Novel {
   author: string;
   description: string;
   rating: number;
-  language: string;
-  level: string;
-  genre: string;
+  tags: string[];
   paragraphs: Paragraph[];
 }

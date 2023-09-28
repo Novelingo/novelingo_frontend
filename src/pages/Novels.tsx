@@ -98,7 +98,7 @@ export default function Novels() {
               title={novel.title}
               subtitle={novel.description}
               rating={novel.rating}
-              tags={[novel.genre, novel.language, novel.level, novel.size]}
+              tags={novel.tags}
               cover={bookcover}
             />
           ))}
