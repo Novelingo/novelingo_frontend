@@ -14,10 +14,12 @@ export default function Filter({title, options}:FilterProps) {
   return (
     <div className="flex flex-col justify-center items-center mb-10 mt-4">
     <p className='text-light'>{title}</p>
-    <div className="flex flex-col w-40 justify-center items-center">
+    <div className="flex flex-col ">
     {options.map((option)=>{
         const isSelected = selectedIds.includes(option.id)
-       return <span key={option.id} onClick={()=>handleClick(isSelected, option.id)} className={`${isSelected ? 'bg-light text-purple':'bg-gradient-to-r from-pink to-purple text-white'} m-1 px-10 py-1 rounded`} >{option.title}</span>
+       return <div key={option.id} onClick={()=>handleClick(isSelected, option.id)} className={`${isSelected ? 'bg-light text-purple':'bg-gradient-to-r from-pink to-purple text-white'} m-1 w-40 p-4 h-9 flex justify-center items-center rounded`} >
+        <p>{option.title}</p>
+        </div>
 
     })}
     </div>

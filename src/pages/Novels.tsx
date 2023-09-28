@@ -1,32 +1,57 @@
 import NovelCard from "../components/NovelCard";
 import bookcover from "../assets/bookcover.png";
 import Filter from "../components/Filter";
-import { useGetAllNovelsQuery } from "../apis/novelApi";
+import { useGetNovelsQuery } from "../apis/novelApi";
 
 export default function Novels() {
-  const { data: novels = [] } = useGetAllNovelsQuery();
 
-  const filters = Array.from({ length: 10 }).map((_, index) => ({
-    title: `Filter ${index} `,
-    options: [
-      { id: "1", title: "French" },
-      { id: "2", title: "English" },
-      { id: "3", title: "Russian" },
-    ],
-  }));
+  const { data: { data: novels } = { data: [] } } = useGetNovelsQuery({
+    page: 1,
+    limit: 12,
+  });
+  // const filters = Array.from({ length: 10 }).map((_, index) => ({
+  //   title: `Filter ${index} `,
+  //   options: [
+  //     { id: "1", title: "French" },
+  //     { id: "2", title: "English" },
+  //     { id: "3", title: "Russian" },
+  //   ],
+  // }));
 
-  // let filters = [
-  //   {title: 'Language',
-  //   options: [{id: '1',title: 'French'}, {id: '2', title: 'English'}, {id: '3', title: 'Russian'}]
-  //   },
-  //   {title: 'Genre',
-  //   options: [{id: '1',title: 'Adult'}, {id: '2', title: 'English'}, {id: '3', title: 'Russian'}]
-  //   }
-  // ]
+  let filters = [
+    {title: 'Language',
+    options: [{id: '1',title: 'French'}, 
+    {id: '2', title: 'English'}, 
+    {id: '3', title: 'Russian'}]
+    },
+    {title: 'Genre',
+    options: [{id: '1',title: 'Adult'}, 
+    {id: '2', title: 'Action'},
+     {id: '3', title: 'Romance'}, 
+     {id: '4', title: 'Horror'},]
+    },
+    {title: 'Size',
+    options: [{id: '1',title: 'Small'}, 
+    {id: '2', title: 'Medium'},
+     {id: '3', title: 'Large'}, 
+    ] },
+    {title: 'Level',
+    options: [{id: '1',title: 'A1'}, 
+    {id: '2', title: 'A2'},
+     {id: '3', title: 'B1'}, 
+     {id: '4', title: 'B2'},
+     {id: '5', title: 'C1'},
+     {id: '6', title: 'C2'},
+    
+    ]
+    },
+
+  ]
 
   return (
     <div className="mt-10 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center ">
-      <div className="fixed top-16 left-1/2 w-full max-w-screen-xl transform -translate-x-1/2 px-2 pt-4 bg-gradient-to-r from-dark1 to-dark2 z-10">
+      
+      <div className="fixed top-16 left-1/2 w-full max-w-screen-xl transform -translate-x-1/2 px-16 2xl:p-0 pt-4 bg-gradient-to-r from-dark1 to-dark2 z-10">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
@@ -73,7 +98,7 @@ export default function Novels() {
               title={novel.title}
               subtitle={novel.description}
               rating={novel.rating}
-              genres={[novel.genre, novel.language, novel.level]}
+              tags={[novel.genre, novel.language, novel.level, novel.size]}
               cover={bookcover}
             />
           ))}
