@@ -17,7 +17,7 @@ interface GetNovelByIdResponse {
 export const novelApi = createApi({
   reducerPath: "novelApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://novelingo-68nbb.ondigitalocean.app/api/novels/",
+    baseUrl: "https://novelingo-o2cuk.ondigitalocean.app/api/novels/",
   }),
   endpoints: (builder) => ({
     getNovels: builder.query<
