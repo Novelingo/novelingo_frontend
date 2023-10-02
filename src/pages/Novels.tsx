@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from "../components/Sidebar";
 import AppButton from "../components/AppButton";
 
+import Loading from "../components/Loading";
+
 export default function Novels() {
 
   
@@ -21,7 +23,7 @@ export default function Novels() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data: { data: novels, pageTotal } = { data: [], pageTotal: 0 } } = useGetNovelsQuery({
+  const { data: { data: novels, pageTotal } = { data: [], pageTotal: 0 }, isLoading } = useGetNovelsQuery({
     page: currentPage,
     limit: 9,
 });
@@ -79,8 +81,7 @@ export default function Novels() {
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              viewBox="0 0 20 20"
-            >
+              viewBox="0 0 20 20"            >
               <path
                 stroke="currentColor"
                 strokeLinecap="round"
@@ -100,7 +101,7 @@ export default function Novels() {
         </div>
       </div>
 
-      <div className="mt-6  md:px-10 px-5 py-10 justify-center  flex">
+      <div className="mt-6  md:px-10 px-5 py-10   flex">
         <div className="hidden md:inline-block">
           {filters.map((filter) => (
             <Filter
@@ -125,21 +126,25 @@ export default function Novels() {
       </div>
       
     
+      <div className="flex flex-wrap md:justify-end justify-center">
+      {isLoading ? (      
+      Array.from({ length: 9 }).map((_, idx) => <Loading key={idx}/> )
 
-        <div className="flex flex-wrap md:justify-end justify-center">
-          {novels.map((novel) => (
+    ) : (
+        novels.map((novel) => (
             <NovelCard
-              onClick={handleClick}
-              key={novel.id}
-              title={novel.title}
-              subtitle={novel.description}
-              rating={novel.rating}
-              tags={novel.tags}
-              cover={bookcover}
+                onClick={handleClick}
+                key={novel.id}
+                title={novel.title}
+                subtitle={novel.description}
+                rating={novel.rating}
+                tags={novel.tags}
+                cover={bookcover}
             />
-          ))}
-          
-        </div>
+        ))
+    )}
+</div>
+
       </div>
       </div>
  
