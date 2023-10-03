@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import Novel from "./pages/Novel";
+import NovelDetail from "./pages/NovelDetail";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/novels" element={<Novels />} />
           <Route path="/generate" element={<Generate />} />
-          <Route path="/novel" element={<Novel />} />
+          <Route path="/novels/:id" element={<NovelDetail />} />
 
         </Routes>
       </BrowserRouter>
