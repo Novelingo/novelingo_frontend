@@ -12,6 +12,7 @@ export default {
      purple: '#624A8E',
      dark2: '#331D5F',
      dark1: '#141639',
+     darkest: '#030C1E',
     },
     fontFamily: {
       'display': ['Purple Purse'],
