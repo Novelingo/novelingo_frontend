@@ -4,8 +4,18 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiThMenu } from "react-icons/ti";
 import logo from "../assets/logo.svg";
 
+import { CurrentPageContext } from '../contexts/CurrentPageContext';
+import { useContext } from 'react';
+
+
 const Navbar = () => {
-  const [current, setCurrent] = useState("Home"); // By default, 'home' is active
+  const context = useContext(CurrentPageContext);
+  if (!context) {
+    throw new Error("SomeComponent must be used within a CurrentPageProvider");
+  }
+
+  const { currentPage, setCurrentPage } = context;
+
 
   let Links = [
     { name: "Home", link: "/" },
@@ -43,11 +53,11 @@ const Navbar = () => {
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-lg md:my-0 my-7">
               <Link
-                onClick={() => setCurrent(link.name)}
+                onClick={() => setCurrentPage(link.name)}
                 to={link.link}
-                className={`${
-                  current === link.name ? "text-pink" : "text-white"
-                } duration-500`}
+                className={`duration-500 ${
+                  currentPage === link.name ? "text-pink" : "text-white"
+                } `}
               >
                 {link.name}
               </Link>

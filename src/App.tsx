@@ -9,11 +9,14 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import NovelDetail from "./pages/NovelDetail";
+import { CurrentPageProvider } from './contexts/CurrentPageContext';
+
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      <CurrentPageProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -22,6 +25,8 @@ function App() {
           <Route path="/novels/:id" element={<NovelDetail />} />
 
         </Routes>
+      </CurrentPageProvider>
+        
       </BrowserRouter>
     </Provider>
   );
