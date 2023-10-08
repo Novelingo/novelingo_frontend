@@ -1,4 +1,4 @@
-import background from "../assets/home.png";
+import background from "../assets/home1.png";
 import AppButton from "../components/AppButton";
 import romance from "../assets/romance.svg";
 import horror from "../assets/horror.svg";
