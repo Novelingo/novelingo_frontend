@@ -45,10 +45,10 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, title, children }) => {
                 <div
                  className="text-darkest flex px-10 justify-center"
                 >
-               <BsFillVolumeUpFill size={25} />
+               <BsFillVolumeUpFill className='cursor-pointer' size={25} />
                  <h3 className="text-lg leading-6 mx-32 font-medium "
                   id="modal-headline" >{title}</h3> 
-                  <div onClick={()=> setSave(!saveWord)}>
+                  <div className="cursor-pointer" onClick={()=> setSave(!saveWord)}>
                         {saveWord? <BiSolidBookmark size={25}  /> :  <BiBookmark size={25}/>}
 
                   </div>

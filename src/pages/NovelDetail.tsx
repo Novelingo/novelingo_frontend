@@ -46,7 +46,7 @@ export default function NovelDetail() {
       </AppSection>
 
       <AppSection className="bg-darkest">
-          <div className="text-light flex flex-wrap">
+          <div className="text-light flex flex-wrap"><br/>
         {novel.paragraphs.map((paragraph) =>
           paragraph.words.map((word) => (
             <div onClick={() => {
@@ -54,7 +54,7 @@ export default function NovelDetail() {
               setSelectedDef(word.definition)
               setShowModal(true);
           }}
-           key={word.id} className="pl-2 hover:text-white">
+           key={word.id} className="pl-2 cursor-pointer hover:text-white">
               {word.word}
            
             
