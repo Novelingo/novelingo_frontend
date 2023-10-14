@@ -109,19 +109,21 @@ export default function Novels() {
         </div>
       </div>
 
-      <div className="mt-6 md:px-10 px-5 py-10 flex justify-center relative overflow-hidden">
-        <div className="flex flex-row h-full relative max-w-screen-lg">
-          <div className="hidden md:flex flex-col absolute left-0 overflow-y-auto max-h-full no-scrollbar">
-            {[...filters, ...filters, ...filters].map((filter) => (
-              <Filter
-                key={filter.title}
-                title={filter.title}
-                options={filter.options}
-              />
-            ))}
+      <div className="mt-6 py-10 flex flex-row  justify-center relative overflow-hidden ">
+        <div className="flex flex-row h-full relative w-full justify-center">
+          <div className="hidden md:flex w-52 relative">
+            <div className="flex flex-col absolute left-0 overflow-y-auto max-h-full no-scrollbar ">
+              {[...filters, ...filters, ...filters].map((filter) => (
+                <Filter
+                  key={filter.title}
+                  title={filter.title}
+                  options={filter.options}
+                />
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col md:pl-52 min-h-screen">
-            <div className="pl-6 self-center md:hidden ">
+          <div className="flex flex-col min-h-screen">
+            <div className="pl-6 self-center md:hidden">
               <AppButton
                 onClick={() => setSidebarOpen(!isSidebarOpen)}
                 className="px-4 my-2 mt-8 text-xs py-2"
@@ -138,7 +140,7 @@ export default function Novels() {
               </div>
             </div>
 
-            <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
               {isLoading
                 ? Array.from({ length: 9 }).map((_, idx) => (
                     <Loading key={idx} />
