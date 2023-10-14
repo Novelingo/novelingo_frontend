@@ -13,7 +13,7 @@ import AppButton from "../components/AppButton";
 import Loading from "../components/Loading";
 
 export default function Novels() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = (id: string) => {
     navigate(`${id}`);
@@ -26,7 +26,7 @@ export default function Novels() {
     isLoading,
   } = useGetNovelsQuery({
     page: currentPage,
-    limit: 9,
+    limit: 12,
   });
 
   // const filters = Array.from({ length: 10 }).map((_, index) => ({
@@ -38,7 +38,7 @@ export default function Novels() {
   //   ],
   // }));
 
-  let filters = [
+  const filters = [
     {
       title: "Language",
       options: [
@@ -79,40 +79,40 @@ export default function Novels() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div>
-      <div className="mt-3 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center ">
-        <div className="fixed top-16 left-1/2 w-full z-10 md:z-20 max-w-screen-xl transform -translate-x-1/2 px-16 2xl:p-0 pt-3 bg-gradient-to-r from-dark1 to-dark2 ">
-          <div className="relative">
-            <div className="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-purple"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </div>
-            <input
-              type="search"
-              id="default-search"
-              className="w-full text-purple p-3 pl-10 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
-              placeholder="Search novels"
-              required
-            />
+    <div className="mt-3 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center">
+      <div className=" fixed top-16 left-1/2 w-full z-10 md:z-20 max-w-screen-xl transform -translate-x-1/2 px-16 2xl:p-0 pt-3 bg-gradient-to-r from-dark1 to-dark2 ">
+        <div className="relative">
+          <div className="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg
+              className="w-4 h-4 text-purple"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
           </div>
+          <input
+            type="search"
+            id="default-search"
+            className="w-full text-purple p-3 pl-10 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
+            placeholder="Search novels"
+            required
+          />
         </div>
+      </div>
 
-        <div className="mt-6  md:px-10 px-5 py-10   flex">
-          <div className="hidden md:inline-block">
-            {filters.map((filter) => (
+      <div className="mt-6 md:px-10 px-5 py-10 flex justify-center relative overflow-hidden">
+        <div className="flex flex-row h-full relative max-w-screen-lg">
+          <div className="hidden md:flex flex-col absolute left-0 overflow-y-auto max-h-full no-scrollbar">
+            {[...filters, ...filters, ...filters].map((filter) => (
               <Filter
                 key={filter.title}
                 title={filter.title}
@@ -120,13 +120,12 @@ export default function Novels() {
               />
             ))}
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col md:pl-52 min-h-screen">
             <div className="pl-6 self-center md:hidden ">
               <AppButton
                 onClick={() => setSidebarOpen(!isSidebarOpen)}
                 className="px-4 my-2 mt-8 text-xs py-2"
               >
-                {" "}
                 Apply Filter
               </AppButton>
               <div className="relative">
@@ -139,7 +138,7 @@ export default function Novels() {
               </div>
             </div>
 
-            <div className="flex flex-wrap md:justify-end justify-center">
+            <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
               {isLoading
                 ? Array.from({ length: 9 }).map((_, idx) => (
                     <Loading key={idx} />
@@ -158,14 +157,14 @@ export default function Novels() {
             </div>
           </div>
         </div>
-
-        <Pagination
-          totalPage={pageTotal}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-
-        <Footer />
       </div>
+
+      <Pagination
+        totalPage={pageTotal}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
+
+      <Footer />
     </div>
   );
 }
