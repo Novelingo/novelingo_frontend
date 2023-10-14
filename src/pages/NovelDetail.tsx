@@ -45,22 +45,25 @@ export default function NovelDetail() {
         <div className="text-light flex flex-wrap">
           {novel.paragraphs.map((paragraph) => (
             <p key={paragraph.id} className="text-light flex flex-wrap mb-3">
-              {paragraph.words.map((word) => (
-                <span
-                  onClick={() => {
-                    setSelectedWord(word.word);
-                    setSelectedDef(word.definition);
-                    setShowModal(true);
-                  }}
-                  key={word.id}
-                  className={
-                    "cursor-pointer hover:text-white " +
-                    (word.definition ? "pl-2" : "")
-                  }
-                >
-                  {word.word}
-                </span>
-              ))}
+              {paragraph.words.map((word) => {
+                const wordValue = word.word.trim();
+                return (
+                  <span
+                    onClick={() => {
+                      setSelectedWord(wordValue);
+                      setSelectedDef(word.definition);
+                      setShowModal(true);
+                    }}
+                    key={word.id}
+                    className={
+                      "cursor-pointer hover:text-white " +
+                      ([".", ",", "?", "!"].includes(wordValue) ? "" : "pl-2")
+                    }
+                  >
+                    {wordValue}
+                  </span>
+                );
+              })}
             </p>
           ))}
         </div>
