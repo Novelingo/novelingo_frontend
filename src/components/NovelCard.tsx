@@ -21,7 +21,7 @@ export default function NovelCard({
   return (
     <div
       onClick={onClick}
-      className="flex h-96 rounded cursor-pointer relative"
+      className="flex h-96 rounded cursor-pointer relative w-72"
     >
       <img
         src={cover}
