@@ -4,9 +4,8 @@ import { Novel } from "../types/novel.type";
 import TextTitle from "../components/TextTitle";
 import AppSection from "../components/AppSection";
 import background from "../assets/novelBck.png";
-import Modal from '../components/Modal';
-import        { useState } from 'react';
-
+import Modal from "../components/Modal";
+import { useState } from "react";
 
 const defaultNovel: Novel = {
   id: "",
@@ -26,8 +25,6 @@ export default function NovelDetail() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [selectedDef, setSelectedDef] = useState<string | null>(null);
 
-
-
   return (
     <div className="mt-16">
       <AppSection
@@ -40,42 +37,46 @@ export default function NovelDetail() {
           maxWidth: "none",
         }}
       >
-
         <TextTitle className="text-white">{novel.title}</TextTitle>
         <p className="text-white mt-6 lg:px-24">{novel.description}</p>
       </AppSection>
 
       <AppSection className="bg-darkest">
-          <div className="text-light flex flex-wrap"><br/>
-        {novel.paragraphs.map((paragraph) =>
-          paragraph.words.map((word) => (
-            <div onClick={() => {
-              setSelectedWord(word.word);
-              setSelectedDef(word.definition)
-              setShowModal(true);
-          }}
-           key={word.id} className="pl-2 cursor-pointer hover:text-white">
-              {word.word}
-           
-            
-      </div>
-          ))
-        )}
-      </div>
-            
+        <div className="text-light flex flex-wrap">
+          {novel.paragraphs.map((paragraph) => (
+            <p key={paragraph.id} className="text-light flex flex-wrap mb-3">
+              {paragraph.words.map((word) => (
+                <span
+                  onClick={() => {
+                    setSelectedWord(word.word);
+                    setSelectedDef(word.definition);
+                    setShowModal(true);
+                  }}
+                  key={word.id}
+                  className={
+                    "cursor-pointer hover:text-white " +
+                    (word.definition ? "pl-2" : "")
+                  }
+                >
+                  {word.word}
+                </span>
+              ))}
+            </p>
+          ))}
+        </div>
       </AppSection>
 
-    <Modal
+      <Modal
         show={showModal}
         onClose={() => {
           setShowModal(false);
           setSelectedWord(null);
-          setSelectedDef(null);  // Clearing the selected word when modal closes
-      }}
-      title={selectedWord || "Default Title"}
+          setSelectedDef(null); // Clearing the selected word when modal closes
+        }}
+        title={selectedWord || "Default Title"}
       >
-        {selectedDef || "Default Definition" }
-      </Modal> 
+        {selectedDef || "Default Definition"}
+      </Modal>
     </div>
   );
 }
