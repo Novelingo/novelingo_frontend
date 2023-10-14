@@ -5,3 +5,20 @@ body{
     background: var(--gradient-header, linear-gradient(90deg, #141639 0%, #331D5F 100%));
 
 }
+
+/* Your Tailwind CSS file or a file imported in your Tailwind CSS config */
+@layer components {
+    .no-scrollbar::-webkit-scrollbar {
+      @apply block hidden;
+    }
+  
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  }
+
+  
+  body{
+    overscroll-behavior: none;
+  }
