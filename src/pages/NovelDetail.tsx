@@ -57,7 +57,9 @@ export default function NovelDetail() {
                     key={word.id}
                     className={
                       "cursor-pointer hover:text-white " +
-                      ([".", ",", "?", "!"].includes(wordValue) ? "" : "pl-2")
+                      ([".", ",", "?", "!", "'"].includes(wordValue)
+                        ? ""
+                        : "pl-2")
                     }
                   >
                     {wordValue}
