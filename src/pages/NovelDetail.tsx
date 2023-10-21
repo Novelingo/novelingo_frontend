@@ -44,7 +44,7 @@ export default function NovelDetail() {
       <AppSection className="bg-darkest">
         <div className="text-light flex flex-wrap">
           {novel.paragraphs.map((paragraph) => (
-            <p key={paragraph.id} className="text-light flex flex-wrap mb-3">
+            <p key={paragraph.id} className="text-light mb-3">
               {paragraph.words.map((word) => {
                 const wordValue = word.word.trim();
                 return (
@@ -55,14 +55,11 @@ export default function NovelDetail() {
                       setShowModal(true);
                     }}
                     key={word.id}
-                    className={
-                      "cursor-pointer hover:text-white " +
-                      ([".", ",", "?", "!", "'"].includes(wordValue)
-                        ? ""
-                        : "pl-2")
-                    }
+                    className={"cursor-pointer hover:text-white "}
                   >
-                    {wordValue}
+                    {([".", ",", "?", "!", "'"].includes(wordValue)
+                      ? ""
+                      : " ") + wordValue}
                   </span>
                 );
               })}
