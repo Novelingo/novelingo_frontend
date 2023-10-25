@@ -1,8 +1,8 @@
 // Modal.tsx
 import React from "react";
 import { BsFillVolumeUpFill } from "react-icons/bs";
-import { BiBookmark, BiSolidBookmark } from 'react-icons/bi'
-import        { useState } from 'react';
+import { BiBookmark, BiSolidBookmark } from "react-icons/bi";
+import { useState } from "react";
 
 interface ModalProps {
   show: boolean;
@@ -42,17 +42,25 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, title, children }) => {
           <div className="bg-light  px-4 pt-5 pb-10 sm:p-10 sm:pb-15">
             <div className="sm:flex justify-center sm:items-start">
               <div className=" text-center  ">
-                <div
-                 className="text-darkest flex px-10 justify-center"
-                >
-               <BsFillVolumeUpFill className='cursor-pointer' size={25} />
-                 <h3 className="text-lg leading-6 mx-32 font-medium "
-                  id="modal-headline" >{title}</h3> 
-                  <div className="cursor-pointer" onClick={()=> setSave(!saveWord)}>
-                        {saveWord? <BiSolidBookmark size={25}  /> :  <BiBookmark size={25}/>}
+                <div className="text-darkest flex px-10 justify-center">
+                  <BsFillVolumeUpFill className="cursor-pointer" size={25} />
+                  <h3
+                    className="text-lg leading-6 sm:w-48 w-32 md:w-72 font-medium "
+                    id="modal-headline"
+                  >
+                    {title}
+                  </h3>
 
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setSave(!saveWord)}
+                  >
+                    {saveWord ? (
+                      <BiSolidBookmark size={25} />
+                    ) : (
+                      <BiBookmark size={25} />
+                    )}
                   </div>
-
                 </div>
                 <p className="mt-4 text-center  text-purple">{children}</p>
               </div>

@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Purple+Purse&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Modern+Antiqua&family=Purple+Purse&display=swap");
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Modern Antiqua', cursive;
-    transition: .3s ease;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Modern Antiqua", cursive;
+  transition: 0.3s ease;
 }
-
-
