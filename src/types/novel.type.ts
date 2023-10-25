@@ -19,3 +19,13 @@ export interface Novel {
   tags: string[];
   paragraphs: Paragraph[];
 }
+
+export interface NovelFilterOption {
+  id: string;
+  title: string;
+}
+
+export interface NovelFilter {
+  title: string;
+  options: NovelFilterOption[];
+}

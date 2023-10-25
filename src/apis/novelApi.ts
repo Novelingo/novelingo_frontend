@@ -1,8 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Novel } from "../types/novel.type";
+import { Novel, NovelFilter } from "../types/novel.type";
 
 interface GetNovelsResponse {
   data: Omit<Novel, "paragraphs">[];
+  filter: {
+    groups: NovelFilter[];
+  };
   countTotal: number;
   countCurrent: number;
   pageTotal: number;

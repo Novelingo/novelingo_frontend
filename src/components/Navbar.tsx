@@ -4,9 +4,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiThMenu } from "react-icons/ti";
 import logo from "../assets/logo.svg";
 
-import { CurrentPageContext } from '../contexts/CurrentPageContext';
-import { useContext } from 'react';
-
+import { CurrentPageContext } from "../contexts/CurrentPageContext";
+import { useContext } from "react";
 
 const Navbar = () => {
   const context = useContext(CurrentPageContext);
@@ -15,7 +14,6 @@ const Navbar = () => {
   }
 
   const { currentPage, setCurrentPage } = context;
-
 
   let Links = [
     { name: "Home", link: "/" },
@@ -26,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-gradient-to-r from-dark1 to-dark2 font-body z-20 w-full fixed top-0 left-0 text-white px-20 max-xl:px-5  `}
+      className={`bg-gradient-to-r from-dark1 to-dark2 font-body z-30 w-full fixed top-0 left-0 text-white px-20 max-xl:px-5  `}
     >
       <div className="flex md:flex items-center justify-between py-4 md:px-10 px-7">
         <Link to="/" className={`text-2xl cursor-pointer flex items-center`}>

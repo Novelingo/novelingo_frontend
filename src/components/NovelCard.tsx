@@ -1,4 +1,3 @@
-import TextTitle from "./TextTitle";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import React from "react";
 
@@ -29,8 +28,16 @@ export default function NovelCard({
         className="w-full h-full rounded absolute"
       />
       <div className="flex flex-col p-4 items-center justify-center text-center z-10">
-        <TextTitle className="mb-6  text-white z-10">{title}</TextTitle>
-        <p className="text-light mb-6 text-sm">{subtitle}</p>
+        <h3 className="mb-6 text-center text-2xl text-white z-10 md:text-3xl font-display">
+          {title}
+        </h3>
+        {subtitle.length < 150 ? (
+          <p className="text-light mb-6 text-sm">{subtitle}</p>
+        ) : (
+          <p className="text-light mb-6 text-sm">
+            {subtitle.substring(0, 150) + "..."}
+          </p>
+        )}
 
         <ul className="flex mb-6 text-pink">
           {tags.map((tag) => (
