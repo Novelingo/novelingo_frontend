@@ -1,24 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
-    background: var(--gradient-header, linear-gradient(90deg, #141639 0%, #331D5F 100%));
-
+body {
+  background: var(
+    --gradient-header,
+    linear-gradient(90deg, #141639 0%, #331d5f 100%)
+  );
 }
 
 /* Your Tailwind CSS file or a file imported in your Tailwind CSS config */
 @layer components {
-    .no-scrollbar::-webkit-scrollbar {
-      @apply block hidden;
-    }
-  
-    .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    @apply block hidden;
   }
 
-  
-  body{
-    overscroll-behavior: none;
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+/* Slide Transitions */
+.slide-enter {
+  transform: translateX(100%);
+}
+.slide-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+.slide-exit {
+  transform: translateX(0);
+}
+.slide-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
+}
