@@ -12,25 +12,16 @@ import levels from "../assets/section3.svg";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
-import { CurrentPageContext } from "../contexts/CurrentPageContext";
-import { useContext } from "react";
-
 export default function Home() {
-  const context = useContext(CurrentPageContext);
-  if (!context) {
-    throw new Error("SomeComponent must be used within a CurrentPageProvider");
-  }
+  const navigate = useNavigate();
 
-  const { currentPage, setCurrentPage } = context;
-
-  let navigate = useNavigate();
-
-  let genres = [
+  const genres = [
     { genre: horror, title: "Horror" },
     { genre: action, title: "Action" },
     { genre: romance, title: "Romance" },
     { genre: adult, title: "Adult" },
   ];
+
   return (
     <div className="mt-10">
       <AppSection
@@ -54,11 +45,8 @@ export default function Home() {
           <AppButton
             onClick={() => {
               navigate("/novels");
-              setCurrentPage("Novels");
             }}
-            className={`w-40 max-xl:self-center text-lg p-4	mt-6 ${
-              currentPage === "Novels" ? "text-pink" : "text-white"
-            } `}
+            className={`w-40 max-xl:self-center text-lg p-4	mt-6 text-white `}
           >
             Start reading{" "}
           </AppButton>

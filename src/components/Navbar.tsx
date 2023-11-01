@@ -1,26 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiThMenu } from "react-icons/ti";
 import logo from "../assets/logo.svg";
 
-import { CurrentPageContext } from "../contexts/CurrentPageContext";
-import { useContext } from "react";
-
 const Navbar = () => {
-  const context = useContext(CurrentPageContext);
-  if (!context) {
-    throw new Error("SomeComponent must be used within a CurrentPageProvider");
-  }
-
-  const { currentPage, setCurrentPage } = context;
-
-  let Links = [
+  const links = [
     { name: "Home", link: "/" },
     { name: "Novels", link: "/novels" },
-    { name: "Generate", link: "/generate" },
+    { name: "Generate", link: "/generate/generate1" },
   ];
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <nav
@@ -48,13 +39,12 @@ const Navbar = () => {
               : "md:bg-transparent top-[-490px]"
           } md:flex md:items-center md:pb-0 pb-12 absolute md:static left-0 w-full md:w-auto mt-4 md:mt-0 md:pl-9 transition-all duration-500 ease-in `}
         >
-          {Links.map((link) => (
+          {links.map((link) => (
             <li key={link.name} className="md:ml-8 text-lg md:my-0 my-7">
               <Link
-                onClick={() => setCurrentPage(link.name)}
                 to={link.link}
                 className={`duration-500 ${
-                  currentPage === link.name ? "text-pink" : "text-white"
+                  location.pathname === link.link ? "text-pink" : "text-white"
                 } `}
               >
                 {link.name}
