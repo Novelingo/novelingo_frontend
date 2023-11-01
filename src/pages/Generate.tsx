@@ -195,18 +195,32 @@
 //     </div>
 //   );
 // }
-import { Link, Outlet } from "react-router-dom";
+
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 export default function Generate() {
+  const location = useLocation();
+  const index = Number(location.pathname[location.pathname.length - 1]);
+  console.log(location.pathname, index);
   return (
     <div className="mt-20">
       {/* <AppButton className="p-5">Start</AppButton> */}
-      <Link className="text-white text-2xl" to="/generate/generate1">
-        Back
-      </Link>
-      <Link className="text-white text-2xl" to="/generate/generate2">
-        Next
-      </Link>
+      {index !== 1 && (
+        <Link
+          className="text-white text-2xl"
+          to={`/generate/generate${index - 1}`}
+        >
+          Back
+        </Link>
+      )}
+      {index !== 7 && (
+        <Link
+          className="text-white text-2xl"
+          to={`/generate/generate${index + 1}`}
+        >
+          Next
+        </Link>
+      )}
       <Outlet />
     </div>
   );

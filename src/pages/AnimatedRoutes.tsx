@@ -18,6 +18,11 @@ export default function AnimatedRoutes() {
         <Route path="generate" element={<Generate />}>
           <Route path="generate1" element={<Generate1 />} />
           <Route path="generate2" element={<Generate2 />} />
+          <Route path="generate3" element={<Generate2 />} />
+          <Route path="generate4" element={<Generate2 />} />
+          <Route path="generate5" element={<Generate2 />} />
+          <Route path="generate6" element={<Generate2 />} />
+          <Route path="generate7" element={<Generate2 />} />
         </Route>
       </Routes>
     </AnimatePresence>
