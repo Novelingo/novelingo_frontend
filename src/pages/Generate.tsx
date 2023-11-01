@@ -71,7 +71,7 @@ export default function Generate() {
           >
             <div className="absolute w-full">
               {currentScreen === screens[0] && (
-                <GenerateTemplate subtitle="Write a title for your novel">
+                <GenerateTemplate subtitle="Write a title for your novel:">
                   <input
                     type="text"
                     className="mt-20 mb-10 text-dark p-3 pl-6 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
@@ -81,7 +81,7 @@ export default function Generate() {
                 </GenerateTemplate>
               )}
               {currentScreen === screens[1] && (
-                <GenerateTemplate subtitle="Write a title for your novel">
+                <GenerateTemplate subtitle="Write a description for your novel:">
                   <textarea
                     className="w-96 h-64 max-h-64 mt-6 text-dark p-3 pl-6 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
                     placeholder="In a world ruled by fear and violence, one hero must fight against a corrupt empire to save the people he loves. With sword in hand and the shadows as his ally, he will stop at nothing to bring hope back to his people."
@@ -116,7 +116,7 @@ export default function Generate() {
                 </GenerateTemplate>
               )}
               {currentScreen === screens[3] && (
-                <GenerateTemplate subtitle="Select the genre of your novel:">
+                <GenerateTemplate subtitle="Select the language you want to learn:">
                   <div className="flex my-6 flex-wrap">
                     {languages.map((language) => (
                       <GenerateGenre
