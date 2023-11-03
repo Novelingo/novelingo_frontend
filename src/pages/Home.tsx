@@ -1,4 +1,4 @@
-import background from "../assets/home1.png";
+import background from "../assets/homepage.svg";
 import AppButton from "../components/AppButton";
 import romance from "../assets/romance.svg";
 import horror from "../assets/horror.svg";
@@ -25,16 +25,12 @@ export default function Home() {
   return (
     <div className="mt-10">
       <AppSection
-        className=" flex items-center"
+        className="bg-gradient-to-r from-dark2 to-dark1 flex flex-wrap xl:flex-nowrap justify-center items-center"
         style={{
-          backgroundImage: `url(${background})`,
           height: "98vh",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          maxWidth: "none",
         }}
       >
-        <div className="max-xl:text-center flex flex-col mx-6 xl:w-1/3">
+        <div className="max-xl:text-center flex flex-col ml-6">
           <TextTitle className=" text-white">
             Novels Beyond Borders: Expand Your Linguistic Horizons
           </TextTitle>
@@ -51,6 +47,7 @@ export default function Home() {
             Start reading{" "}
           </AppButton>
         </div>
+        <img src={`${background}`} className="xl:w-7/12" alt="homepage" />
       </AppSection>
 
       <AppSection className="bg-light">
