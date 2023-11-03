@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import GenerateTemplate from "../components/GenerateTemplate";
 import Slider from "../components/Slider";
-import RangeSlider from "../components/RangeSlider";
+
 export default function Generate5() {
   return (
     <motion.div
@@ -12,21 +12,19 @@ export default function Generate5() {
       exit={{ opacity: 0 }}
     >
       <GenerateTemplate subtitle="Select the language level of  your novel:">
-        {/* <Slider min={0} max={100} sections={5} /> */}
-        {/* <ReactSlider
-                    className="horizontal-slider"
-                    marks={[5, 6, 7, 8, 9]}
-                    markClassName="example-mark"
-                    min={0}
-                    max={9}
-                    invert
-                    thumbClassName="example-thumb"
-                    trackClassName="example-track"
-                    renderThumb={(props, state) => (
-                      <div {...props}>{state.valueNow}</div>
-                    )}
-                  /> */}
-        {/* <RangeSlider /> */}
+        <Slider
+          sections={[
+            { label: "A1", value: 0 },
+            { label: "A2", value: 1 },
+            { label: "B1", value: 2 },
+            { label: "B2", value: 3 },
+            { label: "C1", value: 4 },
+            { label: "C2", value: 5 },
+          ]}
+          onChange={(value, label) => {
+            console.log(value, label);
+          }}
+        />
       </GenerateTemplate>
     </motion.div>
   );

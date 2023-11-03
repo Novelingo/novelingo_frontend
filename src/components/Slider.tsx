@@ -1,46 +1,56 @@
-import React, { useState } from "react";
+import ReactSlider from "react-slider";
+import "./Slider.css";
+import { ReactNode } from "react";
 
-interface SliderProps {
-  min: number;
-  max: number;
-  sections: number;
-}
+type SliderProps<L extends ReactNode, V extends ReactNode> = {
+  sections: {
+    label: L;
+    value: V;
+  }[];
+  onChange?: (value: V, label: L) => void;
+  value?: number;
+  defaultValue?: number;
+};
 
-const Slider: React.FC<SliderProps> = ({ min, max, sections }) => {
-  const [value, setValue] = useState<number>(min);
-
-  const sectionWidth = (max - min) / sections;
-  const intervals = Array.from({ length: sections + 1 }).map(
-    (_, index) => min + index * sectionWidth
-  );
-
+const Slider = <L extends ReactNode, V extends ReactNode>({
+  sections,
+  value,
+  defaultValue,
+  onChange,
+}: SliderProps<L, V>) => {
+  const index = sections.findIndex((section) => section.value === value);
   return (
-    <div className="w-96 text-white relative">
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={value}
-        step={sectionWidth}
-        onChange={(e) => setValue(Number(e.target.value))}
-        className="w-full  mt-5 mb-3"
-      />
-      <div className="flex justify-between absolute top-1/2 transform -translate-y-1/2 w-full px-2">
-        {intervals.map((_, index) => (
-          <div key={index} className="text-sm mt-3 transform -translate-x-1/2">
-            {index === 0 && "A1"}
-            {index === 1 && "A2"}
-            {index === 2 && "B1"}
-            {index === 3 && "B2"}
-            {index === 4 && "C1"}
-            {index === 5 && "C2"}
+    <ReactSlider
+      className="horizontal-slider"
+      marks
+      min={0}
+      defaultValue={defaultValue}
+      max={sections.length - 1}
+      value={index !== -1 ? index : undefined}
+      onChange={(_, index) =>
+        onChange?.(sections[index].value, sections[index].label)
+      }
+      markClassName="example-mark"
+      thumbClassName="example-thumb"
+      trackClassName="example-track"
+      renderMark={(props) => {
+        return (
+          <div {...props}>
+            <div className="absolute w-[1px] top-3 h-5 bg-light" />
+            <p className="absolute text-light top-10 text-lg">
+              {sections[Number(props.key)].label}
+            </p>
           </div>
-        ))}
-      </div>
-      <div className="text-center mt-2">
-        <span className="px-2 py-1 ">{value}</span>
-      </div>
-    </div>
+        );
+      }}
+      renderThumb={(props) => (
+        <div {...props}>
+          <div className="bg-light w-7 h-7 rounded-full items-center flex justify-center">
+            <div className="bg-pink w-3 h-3 rounded-full"></div>
+          </div>
+        </div>
+      )}
+    />
   );
 };
 
