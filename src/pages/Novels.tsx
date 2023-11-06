@@ -1,7 +1,7 @@
 import NovelCard from "../components/NovelCard";
 import bookcover from "../assets/bookcover.png";
 import Filter from "../components/Filter";
-import { GetNovelsRequest, useGetNovelsQuery } from "../apis/novelApi";
+import { useGetNovelsQuery } from "../apis/novelApi";
 import Pagination from "../components/Pagination";
 import { useState } from "react";
 import Footer from "../components/Footer";
@@ -12,6 +12,10 @@ import AppButton from "../components/AppButton";
 
 import Loading from "../components/Loading";
 
+import { useQueryReducer } from "../hooks/query.hooks";
+
+type IState = { [key: string]: string[] } & { page: number };
+
 export default function Novels() {
 	const navigate = useNavigate();
 
@@ -19,10 +23,10 @@ export default function Novels() {
 		navigate(`${id}`);
 	};
 
-	const [currentPage, setCurrentPage] = useState(1);
-	const [isSidebarOpen, setSidebarOpen] = useState(false);
+	const [state, dispatch] = useQueryReducer<IState>({ page: 1 } as IState);
+	const { page, ...filters } = state;
 
-	const [filters, setFilters] = useState<GetNovelsRequest["filters"]>({});
+	const [isSidebarOpen, setSidebarOpen] = useState(false);
 
 	const {
 		data: { data: novels, filter, pageTotal } = {
@@ -32,7 +36,7 @@ export default function Novels() {
 		},
 		isLoading,
 	} = useGetNovelsQuery({
-		page: currentPage,
+		page,
 		limit: 12,
 		filters,
 	});
@@ -78,9 +82,7 @@ export default function Novels() {
 									key={group.key}
 									title={group.title}
 									options={group.options}
-									handleClick={(ids) =>
-										setFilters((prev) => ({ ...prev, [group.key]: ids }))
-									}
+									handleClick={(ids) => dispatch({ [group.key]: ids })}
 								/>
 							))}
 						</div>
@@ -132,8 +134,9 @@ export default function Novels() {
 			</div>
 
 			<Pagination
+				currentPage={page}
 				totalPage={pageTotal}
-				onPageChange={(page) => setCurrentPage(page)}
+				onPageChange={(page) => dispatch({ page } as IState)}
 			/>
 
 			<Footer />
