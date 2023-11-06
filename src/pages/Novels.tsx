@@ -103,7 +103,14 @@ export default function Novels() {
 							</div>
 						</div>
 
-						<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1-100px lg:grid-cols-2-100px xl:grid-cols-3-100px gap-8">
+							{novels.length === 0 && !isLoading && (
+								<div className="col-span-full min-h-[500px] flex justify-center ">
+									<p className="mt-14 text-white">
+										No novels found. Please try another filter or search term.
+									</p>
+								</div>
+							)}
 							{isLoading
 								? Array.from({ length: 9 }).map((_, idx) => (
 										<Loading key={idx} />
