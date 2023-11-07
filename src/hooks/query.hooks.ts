@@ -18,8 +18,6 @@ export const useQueryReducer = <T extends Record<string, number | string[]>>(
       : defaultValue
   );
 
-  console.log({ state }, decodeURI(searchParams.toString()));
-
   useEffect(() => {
     setSearchParams(
       createSearchParams(queryString.stringify(state, { arrayFormat: "index" }))
