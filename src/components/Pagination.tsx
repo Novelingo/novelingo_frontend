@@ -1,16 +1,18 @@
-import React from 'react';
+import React from "react";
 
 interface PaginationProps {
   totalPage: number;
   onPageChange: (page: number) => void;
+  currentPage: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ totalPage, onPageChange }) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
-
+const Pagination: React.FC<PaginationProps> = ({
+  totalPage,
+  onPageChange,
+  currentPage,
+}) => {
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPage) {
-      setCurrentPage(page);
       onPageChange(page);
     }
   };
@@ -24,21 +26,36 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, onPageChange }) => {
       }
     } else {
       if (currentPage <= 3) {
-        pages.push(1, 2, 3, 4, '...', totalPage);
+        pages.push(1, 2, 3, 4, "...", totalPage);
       } else if (currentPage > totalPage - 3) {
-        pages.push(1, '...', totalPage - 3, totalPage - 2, totalPage - 1, totalPage);
+        pages.push(
+          1,
+          "...",
+          totalPage - 3,
+          totalPage - 2,
+          totalPage - 1,
+          totalPage
+        );
       } else {
-        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPage);
+        pages.push(
+          1,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPage
+        );
       }
     }
 
     return pages.map((page, index) => {
-      if (typeof page === 'number') {
+      if (typeof page === "number") {
         return (
           <button
             key={index}
             className={`w-8 h-8 text-white outline  outline-2 flex justify-center items-center m-2  ${
-              page === currentPage ? 'outline outline-pink text-white' : ''
+              page === currentPage ? "outline outline-pink text-white" : ""
             }`}
             onClick={() => handlePageChange(page)}
           >
@@ -47,7 +64,10 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, onPageChange }) => {
         );
       } else {
         return (
-          <span key={index} className="w-10 h-10 flex justify-center items-center m-2">
+          <span
+            key={index}
+            className="w-10 h-10 flex justify-center items-center m-2"
+          >
             {page}
           </span>
         );

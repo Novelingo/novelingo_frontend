@@ -26,7 +26,7 @@ export interface GetNovelsRequest {
 export const novelApi = createApi({
 	reducerPath: "novelApi",
 	baseQuery: fetchBaseQuery({
-		baseUrl: "http://127.0.0.1:8000/api/novels/",
+		baseUrl: "https://novelingo-o2cuk.ondigitalocean.app/api/novels/",
 		paramsSerializer: (params) => {
 			// add support for array params
 			const searchParams = new URLSearchParams();
