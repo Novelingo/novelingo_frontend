@@ -27,9 +27,9 @@ const Slider = <L extends ReactNode, V extends ReactNode>({
       defaultValue={defaultValue}
       max={sections.length - 1}
       value={index !== -1 ? index : undefined}
-      onChange={(_, index) =>
-        onChange?.(sections[index].value, sections[index].label)
-      }
+      onChange={(index) => {
+        onChange?.(sections[index].value, sections[index].label);
+      }}
       markClassName="example-mark"
       thumbClassName="example-thumb"
       trackClassName="example-track"
