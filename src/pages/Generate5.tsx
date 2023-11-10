@@ -21,9 +21,9 @@ export default function Generate5() {
             { label: "C1", value: 4 },
             { label: "C2", value: 5 },
           ]}
-          onChange={(value, label) => {
-            console.log(value, label);
-          }}
+          // onChange={(value, label) => {
+          //   console.log(value, label);
+          // }}
         />
       </GenerateTemplate>
     </motion.div>

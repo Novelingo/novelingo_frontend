@@ -9,14 +9,12 @@ export default function Generate() {
   const navigate = useNavigate();
   const location = useLocation();
   const index = Number(location.pathname[location.pathname.length - 1]);
-  console.log(location.pathname, index);
   return (
-    <div className=" pt-10">
+    <div>
       <AppSection
-        className=""
         style={{
           backgroundImage: `url(${background})`,
-          height: "94vh",
+          height: "100vh",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           maxWidth: "none",
@@ -38,7 +36,7 @@ export default function Generate() {
             </AppButton>
           )}
 
-          {index !== 7 && (
+          {index !== 5 && (
             <AppButton
               onClick={() => {
                 navigate(`/generate/generate${index + 1}`);
@@ -46,6 +44,12 @@ export default function Generate() {
               className={`w-28 text-m px-2 py-1 text-white `}
             >
               Next
+            </AppButton>
+          )}
+
+          {index === 5 && (
+            <AppButton className={`w-28 text-m px-2 py-1 text-white `}>
+              Submit
             </AppButton>
           )}
         </div>

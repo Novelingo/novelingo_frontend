@@ -35,7 +35,7 @@ const Navbar = () => {
         <ul
           className={`${
             open
-              ? "top-10 pl-12 bg-gradient-to-r from-dark1 to-dark2"
+              ? "top-12 mt-4 pl-12 bg-gradient-to-r from-dark1 to-dark2"
               : "md:bg-transparent top-[-490px]"
           } md:flex md:items-center md:pb-0 pb-12 absolute md:static left-0 w-full md:w-auto mt-4 md:mt-0 md:pl-9 transition-all duration-500 ease-in `}
         >

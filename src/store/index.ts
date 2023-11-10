@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { novelApi } from "../apis/novelApi";
+import generateSlice from "../features/generateSlice";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
+    generate: generateSlice,
     [novelApi.reducerPath]: novelApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -13,3 +16,7 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+
+// Use throughout your app instead of plain `useDispatch` and `useSelector`
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

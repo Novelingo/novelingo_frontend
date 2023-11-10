@@ -1,23 +1,23 @@
-import React from 'react';
+import React from "react";
 
-// Define prop types
-interface AppButtonProps {
+// Define prop types to extend all native button attributes
+interface AppButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  className?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-// Destructure and type the props in the function parameters
-export default function AppButton({
+const AppButton: React.FC<AppButtonProps> = ({
   children,
-  className = "",  // Providing a default value
-  onClick
-}: AppButtonProps) {
+  className = "",
+  ...rest // Use rest to collect all other props
+}) => {
   return (
-    <button 
-      onClick={onClick} 
-      className={`bg-gradient-to-r from-pink to-purple hover:from-light hover:to-light hover:text-purple rounded-xl hover:outline hover:outline-1 hover:outline-purple text-base text-white ${className}`}>
+    <button
+      {...rest} // Spread the rest of the props here
+      className={`bg-gradient-to-r from-pink to-purple hover:from-light hover:to-light hover:text-purple rounded-xl hover:outline hover:outline-1 hover:outline-purple text-base text-white ${className}`}
+    >
       {children}
     </button>
   );
-}
+};
+
+export default AppButton;
