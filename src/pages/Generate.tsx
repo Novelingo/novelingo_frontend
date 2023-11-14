@@ -36,7 +36,7 @@ export default function Generate() {
             </AppButton>
           )}
 
-          {index !== 5 && (
+          {index !== 7 && (
             <AppButton
               onClick={() => {
                 navigate(`/generate/generate${index + 1}`);
@@ -47,9 +47,9 @@ export default function Generate() {
             </AppButton>
           )}
 
-          {index === 5 && (
+          {index === 7 && (
             <AppButton className={`w-28 text-m px-2 py-1 text-white `}>
-              Submit
+              Generate
             </AppButton>
           )}
         </div>

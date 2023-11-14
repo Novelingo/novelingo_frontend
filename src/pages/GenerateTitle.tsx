@@ -15,16 +15,21 @@ export default function Generate1() {
       exit={{ opacity: 0 }}
     >
       <GenerateTemplate subtitle="Write a title for your novel:">
-        <input
-          value={title}
-          onChange={(e) => {
-            dispatch(setTitle(e.target.value));
-          }}
-          type="text"
-          className="mt-20 mb-10 text-dark p-3 pl-6 md:pr-40 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
-          placeholder="The Love of a Lifetime"
-          required
-        />
+        <div className="mb-10">
+          <input
+            value={title}
+            onChange={(e) => {
+              dispatch(setTitle(e.target.value));
+            }}
+            type="text"
+            className="mt-20 text-dark p-3 pl-6 md:pr-40 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
+            placeholder="The Love of a Lifetime"
+            required
+          />
+          <p className="text-light text-sm mt-1">
+            Leave blank to auto-generate
+          </p>
+        </div>
       </GenerateTemplate>
     </motion.div>
   );

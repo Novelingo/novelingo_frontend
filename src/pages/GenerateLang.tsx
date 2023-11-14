@@ -33,7 +33,7 @@ export default function Generate4() {
       transition={{ duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      <GenerateTemplate subtitle="Select the language you want to learn:">
+      <GenerateTemplate subtitle="*Select the language you want to learn:">
         <div className="flex my-6 flex-wrap justify-center items-center">
           {languages.map((language) => (
             <GenerateLang

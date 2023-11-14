@@ -5,28 +5,30 @@ interface NovelProps {
   tags: string[];
   title: string;
   subtitle: string;
-  rating: number;
+  rating?: number;
   cover: string;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 export default function NovelCard({
   tags,
   title,
   subtitle,
-  rating,
+  rating = 0,
   cover,
   onClick,
 }: NovelProps) {
   return (
     <div
       onClick={onClick}
-      className="flex h-96 rounded cursor-pointer relative w-72"
+      className="flex h-96 rounded-xl  cursor-pointer relative w-72"
     >
       <img
         src={cover}
         alt="book cover"
-        className="w-full h-full rounded absolute"
+        className=" w-full h-full rounded-xl absolute"
       />
+      <div className=" bg-dark1/60  w-full h-full rounded-xl  absolute"></div>
+
       <div className="flex flex-col p-4 items-center justify-center text-center z-10">
         <h3 className="mb-6 text-center text-2xl text-white z-10 md:text-3xl font-display">
           {title}

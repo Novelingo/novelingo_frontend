@@ -23,7 +23,7 @@ export default function Generate5() {
       transition={{ duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      <GenerateTemplate subtitle="Select the language level of your novel:">
+      <GenerateTemplate subtitle="*Select the language level of your novel:">
         <Slider
           sections={sections}
           onChange={(_, label) => {

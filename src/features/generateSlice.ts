@@ -7,6 +7,7 @@ interface generateState {
   genre: string;
   language: string;
   level: string;
+  notes: string;
 }
 
 // Define the initial state using that type
@@ -16,6 +17,7 @@ const initialState: generateState = {
   genre: "",
   language: "",
   level: "",
+  notes: "",
 };
 
 export const generateSlice = createSlice({
@@ -30,6 +32,10 @@ export const generateSlice = createSlice({
     setDescription: (state, action: PayloadAction<string>) => {
       state.description = action.payload;
     },
+
+    setNotes: (state, action: PayloadAction<string>) => {
+      state.notes = action.payload;
+    },
     setGenre: (state, action: PayloadAction<string>) => {
       state.genre = action.payload;
     },
@@ -42,7 +48,13 @@ export const generateSlice = createSlice({
   },
 });
 
-export const { setTitle, setDescription, setGenre, setLanguage, setLevel } =
-  generateSlice.actions;
+export const {
+  setTitle,
+  setDescription,
+  setNotes,
+  setGenre,
+  setLanguage,
+  setLevel,
+} = generateSlice.actions;
 
 export default generateSlice.reducer;
