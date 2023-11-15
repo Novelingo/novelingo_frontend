@@ -11,6 +11,8 @@ export default function GenerateOptions({
   selectedGenre,
 }: OptionProps) {
   const isSelected = selectedGenre?.includes(title);
+  // console.log(isSelected, selectedGenre);
+
   return (
     <div
       onClick={onClick}

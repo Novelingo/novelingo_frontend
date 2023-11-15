@@ -8,15 +8,15 @@ export default function GeneratePreview() {
   const title = useAppSelector((state) => state.generate.title);
   const description = useAppSelector((state) => state.generate.description);
   const notes = useAppSelector((state) => state.generate.notes);
+  const level = useAppSelector((state) => state.generate.level);
+  const language = useAppSelector((state) => state.generate.languageID);
+  const genre = useAppSelector((state) => state.generate.genreID);
 
-  // const genre = useAppSelector((state) => state.generate.genre);
-  // const level = useAppSelector((state) => state.generate.level);
-  // const language = useAppSelector((state) => state.generate.language);
+  const langDisplay = useAppSelector((state) => state.generate.languageDisplay);
+  const genreDisplay = useAppSelector((state) => state.generate.genreDisplay);
 
-  const level = "C1";
-  const language = "en";
   const size = "LARGE";
-  const genre = "fiction";
+
   const { data } = useGetNovelPreviewQuery({
     title,
     description,
@@ -27,11 +27,9 @@ export default function GeneratePreview() {
     notes,
   });
 
-  // const data = [title, description, genre, level, language];
-  console.log(data);
-
   return (
     <motion.div
+      key={genre}
       className=" mt-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -42,7 +40,11 @@ export default function GeneratePreview() {
         <NovelCard
           title={data?.title || title}
           subtitle={data?.description || description}
-          tags={[genre, level, language]}
+          tags={[
+            data?.genre_display || genreDisplay,
+            level,
+            data?.language_display || langDisplay,
+          ]}
           cover={data?.cover || ""}
         />
       </GenerateTemplate>

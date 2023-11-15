@@ -22,11 +22,22 @@ export interface GetNovelsRequest {
   filters: { [key: string]: string[] };
 }
 
-// 1 create types
+// 1 create types for response and request
+export interface GetSupportedLanguagesResponse {
+  data: {
+    id: string;
+    title: string;
+    icon: string;
+  }[];
+}
+export type GetSupportedLanguagesRequest = void; //because we dont send anything
+
 export interface GetNovelPreviewResponse {
   title: string;
   description: string;
   cover: string;
+  language_display: string;
+  genre_display: string;
 }
 export interface GetNovelPreviewRequest {
   title?: string;
@@ -81,9 +92,10 @@ export const novelApi = createApi({
     >({
       query: ({ title, description, genre, level, language, notes }) => {
         return {
-          url: "/preview",
+          url: "/preview", // url of api on the server
+
           params: {
-            // query params
+            // query params that we send to the server
             title,
             description,
             genre,
@@ -94,6 +106,19 @@ export const novelApi = createApi({
         };
       },
     }),
+
+    // 2 create query
+    getSupportedLanguages: builder.query<
+      GetSupportedLanguagesResponse,
+      GetSupportedLanguagesRequest
+    >({
+      query: () => "/supported/languages",
+      // query: ()=>{
+      //   return {
+      //     url: '/supported/languages'
+      //   }
+      // }
+    }),
   }),
 });
 
@@ -101,4 +126,5 @@ export const {
   useGetNovelsQuery,
   useGetNovelByIdQuery,
   useGetNovelPreviewQuery,
+  useGetSupportedLanguagesQuery,
 } = novelApi;

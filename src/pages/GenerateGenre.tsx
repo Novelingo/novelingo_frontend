@@ -6,17 +6,22 @@ import horror from "../assets/horror.svg";
 import action from "../assets/action.svg";
 import adult from "../assets/adult.svg";
 import { useAppDispatch, useAppSelector } from "../store";
-import { setGenre } from "../features/generateSlice";
+import { setGenreID, setGenreDisplay } from "../features/generateSlice";
 
 export default function GenerateGenre() {
   const dispatch = useAppDispatch();
-  const currentGenre = useAppSelector((state) => state.generate.genre);
-  // console.log(currentGenre);
+
+  // const genreID = useAppSelector((state) => state.generate.genreID) || "horror";
+
+  const genreDisplay =
+    useAppSelector((state) => state.generate.genreDisplay) || "Horror";
+  // console.log(genreID, genreDisplay);
+
   const genres = [
-    { icon: horror, title: "Horror" },
-    { icon: action, title: "Action" },
-    { icon: romance, title: "Romance" },
-    { icon: adult, title: "Adult" },
+    { icon: horror, title: "Horror", id: "horror" },
+    { icon: action, title: "Action", id: "action" },
+    { icon: romance, title: "Romance", id: "romance" },
+    { icon: adult, title: "Adult", id: "adult" },
   ];
   return (
     <motion.div
@@ -31,12 +36,13 @@ export default function GenerateGenre() {
           {genres.map((genre) => (
             <GenerateG
               onClick={() => {
-                dispatch(setGenre(genre.title));
+                dispatch(setGenreID(genre.id));
+                dispatch(setGenreDisplay(genre.title));
               }}
-              key={genre.title}
+              key={genre.id}
               title={genre.title}
               icon={genre.icon}
-              selectedGenre={currentGenre}
+              selectedGenre={genreDisplay}
             />
           ))}
         </div>

@@ -14,7 +14,7 @@ export default function GenerateTemplate({
       <TextTitle className="text-white text-center">
         Generate a novel from your own imagination in minutes!
       </TextTitle>
-      <p className="text-white text-center mt-20 text-xl">{subtitle} </p>
+      <p className="text-white text-center mt-20 mb-2 text-xl">{subtitle} </p>
       {children}
     </div>
   );

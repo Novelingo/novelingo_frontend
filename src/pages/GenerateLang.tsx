@@ -1,29 +1,19 @@
 import { motion } from "framer-motion";
 import GenerateTemplate from "../components/GenerateTemplate";
 import GenerateLang from "../components/GenerateOptions";
-import english from "../assets/eng.svg";
-import french from "../assets/french.svg";
-import spanish from "../assets/spanish.svg";
-import russian from "../assets/russia.svg";
-import portugal from "../assets/portugal.svg";
-import italy from "../assets/italy.svg";
-import germany from "../assets/german.svg";
-import { setLanguage } from "../features/generateSlice";
+
+import { setLanguageID, setLanguageDisplay } from "../features/generateSlice";
 import { useAppDispatch, useAppSelector } from "../store";
+import { useGetSupportedLanguagesQuery } from "../apis/novelApi";
 
 export default function Generate4() {
-  const languages = [
-    { icon: english, title: "English" },
-    { icon: french, title: "French" },
-    { icon: italy, title: "Italian" },
-    { icon: russian, title: "Russian" },
-    { icon: germany, title: "German" },
-    { icon: spanish, title: "Spanish" },
-    { icon: portugal, title: "Portugese" },
-  ];
+  // const langID = useAppSelector((state) => state.generate.languageID);
+  const langDisplay = useAppSelector((state) => state.generate.languageDisplay);
+  // console.log(langID, langDisplay);
 
-  const lang = useAppSelector((state) => state.generate.language);
-  // console.log(lang);
+  const { data: { data: languages } = { data: [] } } =
+    useGetSupportedLanguagesQuery();
+
   const dispatch = useAppDispatch();
   return (
     <motion.div
@@ -38,12 +28,13 @@ export default function Generate4() {
           {languages.map((language) => (
             <GenerateLang
               onClick={() => {
-                dispatch(setLanguage(language.title));
+                dispatch(setLanguageID(language.id));
+                dispatch(setLanguageDisplay(language.title));
               }}
-              key={language.title}
+              key={language.id}
               title={language.title}
               icon={language.icon}
-              selectedGenre={lang}
+              selectedGenre={langDisplay || "English"}
             />
           ))}
         </div>

@@ -5,8 +5,10 @@ import { setLevel } from "../features/generateSlice";
 import { useAppDispatch } from "../store";
 
 export default function Generate5() {
-  // const level = useAppSelector((state) => state.generate.level);
   const dispatch = useAppDispatch();
+  // const level = useAppSelector((state) => state.generate.level);
+  // console.log(level);
+
   const sections = [
     { label: "A1", value: 0 },
     { label: "A2", value: 1 },

@@ -4,8 +4,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface generateState {
   title: string;
   description: string;
-  genre: string;
-  language: string;
+  genreID: string;
+  genreDisplay: string;
+  languageID: string;
+  languageDisplay: string;
   level: string;
   notes: string;
 }
@@ -14,9 +16,11 @@ interface generateState {
 const initialState: generateState = {
   title: "",
   description: "",
-  genre: "",
-  language: "",
-  level: "",
+  genreID: "horror",
+  genreDisplay: "Horror",
+  languageID: "en",
+  languageDisplay: "English",
+  level: "A1",
   notes: "",
 };
 
@@ -36,12 +40,19 @@ export const generateSlice = createSlice({
     setNotes: (state, action: PayloadAction<string>) => {
       state.notes = action.payload;
     },
-    setGenre: (state, action: PayloadAction<string>) => {
-      state.genre = action.payload;
+    setGenreID: (state, action: PayloadAction<string>) => {
+      state.genreID = action.payload;
     },
-    setLanguage: (state, action: PayloadAction<string>) => {
-      state.language = action.payload;
+    setLanguageID: (state, action: PayloadAction<string>) => {
+      state.languageID = action.payload;
     },
+    setGenreDisplay: (state, action: PayloadAction<string>) => {
+      state.genreDisplay = action.payload;
+    },
+    setLanguageDisplay: (state, action: PayloadAction<string>) => {
+      state.languageDisplay = action.payload;
+    },
+
     setLevel: (state, action: PayloadAction<string>) => {
       state.level = action.payload;
     },
@@ -52,8 +63,10 @@ export const {
   setTitle,
   setDescription,
   setNotes,
-  setGenre,
-  setLanguage,
+  setGenreID,
+  setLanguageID,
+  setGenreDisplay,
+  setLanguageDisplay,
   setLevel,
 } = generateSlice.actions;
 
