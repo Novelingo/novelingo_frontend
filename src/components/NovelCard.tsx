@@ -18,14 +18,17 @@ export default function NovelCard({
   onClick,
 }: NovelProps) {
   return (
-    <div onClick={onClick} className="flex  sm:h-96 rounded-xl relative w-72">
+    <div
+      onClick={onClick}
+      className="flex rounded-xl relative w-72"
+      style={{ height: window.innerHeight < 722 ? "21rem" : "24rem" }}
+    >
       <img
         src={cover}
         alt="book cover"
         className=" w-full h-full rounded-xl absolute"
       />
       <div className=" bg-dark1/60  w-full h-full rounded-xl  absolute"></div>
-
       <div className="flex flex-col p-4 items-center justify-center text-center z-10">
         <h3 className="mb-6 cursor-default text-center text-2xl md:text-3xl text-white z-10  font-display">
           {title}
