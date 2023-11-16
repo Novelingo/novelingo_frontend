@@ -96,12 +96,22 @@ export default function Novels() {
                 Apply Filter
               </AppButton>
               <div className="relative">
-                {isSidebarOpen && (
-                  <Sidebar
-                    filters={filter.groups}
-                    onClose={() => setSidebarOpen(false)}
-                  />
-                )}
+                <Sidebar
+                  isOpen={isSidebarOpen}
+                  onClose={() => setSidebarOpen(false)}
+                  sections={filter.groups.map((group) => ({
+                    component: (
+                      <Filter
+                        selectedIds={filters[group.key] || []}
+                        key={group.key}
+                        title={group.title}
+                        options={group.options}
+                        handleClick={(ids) => dispatch({ [group.key]: ids })}
+                      />
+                    ),
+                    title: group.title,
+                  }))}
+                />
               </div>
             </div>
 
