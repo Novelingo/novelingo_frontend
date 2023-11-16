@@ -34,7 +34,12 @@ const Navbar = () => {
             {open ? <AiOutlineCloseCircle /> : <TiThMenu />}
           </span>
         </div>
-
+        {open && (
+          <div
+            onClick={() => setOpen(!open)}
+            className={` bg-dark1/60 fixed top-0 left-0 w-96 h-full -z-10`}
+          ></div>
+        )}
         <ul
           className={`${
             open
