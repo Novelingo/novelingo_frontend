@@ -37,7 +37,7 @@ export default function Novels() {
     isLoading,
   } = useGetNovelsQuery({
     page,
-    limit: 12,
+    limit: 6,
     filters,
   });
 
@@ -88,10 +88,10 @@ export default function Novels() {
             </div>
           </div>
           <div className="flex flex-col min-h-screen">
-            <div className="pl-6 self-center md:hidden">
+            <div className="self-center md:hidden">
               <AppButton
                 onClick={() => setSidebarOpen(!isSidebarOpen)}
-                className="px-4 my-2 mt-8 text-xs py-2"
+                className="px-4 my-4 mt-6 text-xs py-2"
               >
                 Apply Filter
               </AppButton>
