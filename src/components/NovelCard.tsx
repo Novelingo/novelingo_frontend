@@ -21,7 +21,7 @@ export default function NovelCard({
     <div
       onClick={onClick}
       className="flex rounded-xl relative w-72"
-      style={{ height: window.innerHeight < 722 ? "21rem" : "24rem" }}
+      style={{ height: window.innerHeight < 722 ? "21rem" : "23rem" }}
     >
       <img
         src={cover}
