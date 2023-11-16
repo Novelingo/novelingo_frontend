@@ -22,8 +22,8 @@ export default function GenerateNotes() {
           onChange={(e) => {
             dispatch(setNotes(e.target.value));
           }}
-          className="md:w-5/12 w-80 h-64 max-h-64 mt-6 text-dark  p-6 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
-          placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset"
+          className="w-80 md:w-2/4 h-64 max-h-64 mt-6 text-dark  p-6 placeholder:text-purple md:text-base bg-light rounded shadow-sm focus:outline-none text-sm"
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus lectus urna, varius lacinia est laoreet quis. Morbi nec eleifend lorem, non fermentum mauris. In eros elit, mattis et lorem eu, fringilla auctor velit."
           required
         />
       </GenerateTemplate>

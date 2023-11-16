@@ -18,10 +18,10 @@ export default function GenerateOptions({
       onClick={onClick}
       className={`${
         isSelected ? "bg-light text-dark2" : " text-white border-light"
-      } w-32 m-2 hover:bg-light  hover:text-dark2 h-32 border-2 rounded  flex flex-col justify-center items-center`}
+      } md:w-32 md:h-32 w-20 m-2 hover:bg-light  hover:text-dark2  border-2 rounded  flex flex-col justify-center items-center`}
     >
-      <img src={icon} alt="Option icon" className="w-20 h-20" />
-      <p className="mt-1">{title}</p>
+      <img src={icon} alt="Option icon" className="md:w-20 w-14 h-20" />
+      <p className=" md:mt-2 mb-1 md:mb-0 md:text-base text-sm">{title}</p>
     </div>
   );
 }

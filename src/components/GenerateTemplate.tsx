@@ -10,11 +10,13 @@ export default function GenerateTemplate({
   className,
 }: Generateprops) {
   return (
-    <div className={`mt-10 flex flex-col items-center ${className}`}>
+    <div className={`flex flex-col items-center ${className}`}>
       <TextTitle className="text-white text-center">
         Generate a novel from your own imagination in minutes!
       </TextTitle>
-      <p className="text-white text-center mt-20 mb-2 text-xl">{subtitle} </p>
+      <p className="text-white text-center mt-10 mb-1  md:text-xl">
+        {subtitle}{" "}
+      </p>
       {children}
     </div>
   );

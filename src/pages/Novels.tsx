@@ -118,15 +118,17 @@ export default function Novels() {
                     <Loading key={idx} />
                   ))
                 : novels.map((novel) => (
-                    <NovelCard
-                      onClick={() => handleClick(novel.id)}
-                      key={novel.id}
-                      title={novel.title}
-                      subtitle={novel.description}
-                      rating={novel.rating}
-                      tags={novel.tags}
-                      cover={bookcover}
-                    />
+                    <span key={novel.id} className="cursor-pointer">
+                      <NovelCard
+                        onClick={() => handleClick(novel.id)}
+                        key={novel.id}
+                        title={novel.title}
+                        subtitle={novel.description}
+                        rating={novel.rating}
+                        tags={novel.tags}
+                        cover={bookcover}
+                      />
+                    </span>
                   ))}
             </div>
           </div>

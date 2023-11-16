@@ -18,7 +18,10 @@ const Navbar = () => {
       className={`bg-dark1 font-body z-30 w-full fixed top-0 left-0 text-white px-20 max-xl:px-5  `}
     >
       <div className="flex md:flex items-center justify-between py-4 md:px-10 px-7">
-        <Link to="/" className={`text-2xl cursor-pointer flex items-center`}>
+        <Link
+          to="/"
+          className={`md:text-2xl text-xl cursor-pointer flex items-center`}
+        >
           <img src={logo} alt="logo" />
           <p className="ml-2">Novelingo</p>
         </Link>

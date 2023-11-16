@@ -21,7 +21,7 @@ const Slider = <L extends ReactNode, V extends ReactNode>({
   const index = sections.findIndex((section) => section.value === value);
   return (
     <ReactSlider
-      className="horizontal-slider"
+      className="horizontal-slider "
       marks
       min={0}
       defaultValue={defaultValue}

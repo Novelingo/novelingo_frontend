@@ -18,10 +18,7 @@ export default function NovelCard({
   onClick,
 }: NovelProps) {
   return (
-    <div
-      onClick={onClick}
-      className="flex h-96 rounded-xl  cursor-pointer relative w-72"
-    >
+    <div onClick={onClick} className="flex  sm:h-96 rounded-xl relative w-72">
       <img
         src={cover}
         alt="book cover"
@@ -30,18 +27,18 @@ export default function NovelCard({
       <div className=" bg-dark1/60  w-full h-full rounded-xl  absolute"></div>
 
       <div className="flex flex-col p-4 items-center justify-center text-center z-10">
-        <h3 className="mb-6 text-center text-2xl text-white z-10 md:text-3xl font-display">
+        <h3 className="mb-6 cursor-default text-center text-2xl md:text-3xl text-white z-10  font-display">
           {title}
         </h3>
         {subtitle.length < 150 ? (
-          <p className="text-light mb-6 text-sm">{subtitle}</p>
+          <p className="text-light cursor-default mb-6 text-sm">{subtitle}</p>
         ) : (
-          <p className="text-light mb-6 text-sm">
+          <p className="text-light cursor-default mb-6 text-sm">
             {subtitle.substring(0, 150) + "..."}
           </p>
         )}
 
-        <ul className="flex mb-6 text-pink">
+        <ul className="flex mb-6 cursor-default text-pink">
           {tags.map((tag) => (
             <li
               key={tag}
@@ -52,7 +49,7 @@ export default function NovelCard({
           ))}
         </ul>
         <div className="flex items-center text-white">
-          <p className="pr-1">{rating}</p>
+          <p className="pr-1 cursor-default">{rating}</p>
           {Array.from({ length: rating }).map((_, index) => (
             <span key={index}>
               <AiFillStar />
