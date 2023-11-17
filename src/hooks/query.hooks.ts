@@ -9,7 +9,10 @@ export const useQueryReducer = <T extends Record<string, number | string[]>>(
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [state, dispatch] = useReducer(
-    (state: T, newState: Partial<T>) => ({ ...state, ...newState } as T),
+    (state: T, newState: Partial<T> | void) => {
+      if (!newState) return defaultValue;
+      return { ...state, ...newState };
+    },
     searchParams.toString()
       ? (queryString.parse(decodeURI(searchParams.toString()), {
           parseNumbers: true,
