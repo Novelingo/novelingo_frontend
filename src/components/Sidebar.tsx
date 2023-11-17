@@ -1,13 +1,20 @@
+import { Button } from "flowbite-react";
 import React, { useState, ReactNode } from "react";
 import { FaChevronDown, FaChevronRight, FaTimes } from "react-icons/fa";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  reset: () => void;
   sections: { title: string; component: ReactNode }[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, sections }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  onClose,
+  sections,
+  reset,
+}) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleFilter = (index: number) => {
@@ -47,6 +54,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, sections }) => {
               {activeIndex === index && section.component}
             </div>
           ))}
+          <Button
+            onClick={reset}
+            className=" absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-purple  md:w-40 p-4 h-9 bg-gradient-to-r from-purple to-dark2 hover:from-dark2 hover:to-purple  text-base text-white"
+          >
+            Reset
+          </Button>
         </div>
       </div>
     </>

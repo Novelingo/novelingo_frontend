@@ -14,6 +14,7 @@ import Loading from "../components/Loading";
 
 import { useQueryReducer } from "../hooks/query.hooks";
 import SearchBar from "../components/SearchBar";
+import { Button } from "flowbite-react";
 
 type IState = { [key: string]: string[] } & { page: number };
 
@@ -44,9 +45,7 @@ export default function Novels() {
 
   return (
     <div className="mt-3 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center">
-      <div className=" fixed top-16 left-1/2 w-full z-20 md:z-30 max-w-screen-xl transform -translate-x-1/2 px-16 2xl:p-0 pt-3 bg-gradient-to-r from-dark1 to-dark2 ">
-        <SearchBar />
-      </div>
+      <SearchBar />
 
       <div className="mt-6 py-10 flex flex-row  justify-center relative overflow-hidden ">
         <div className="flex flex-row h-full relative w-full justify-center">
@@ -61,6 +60,14 @@ export default function Novels() {
                   handleClick={(ids) => dispatch({ [group.key]: ids })}
                 />
               ))}
+              <Button
+                className="m-1 bg-purple  md:w-40 p-4 h-9 bg-gradient-to-r from-purple to-dark2 hover:from-dark2 hover:to-purple  text-base text-white"
+                onClick={() => {
+                  dispatch();
+                }}
+              >
+                Reset
+              </Button>
             </div>
           </div>
           <div className="flex flex-col min-h-screen">
@@ -73,6 +80,9 @@ export default function Novels() {
               </AppButton>
               <div className="relative">
                 <Sidebar
+                  reset={() => {
+                    dispatch();
+                  }}
                   isOpen={isSidebarOpen}
                   onClose={() => setSidebarOpen(false)}
                   sections={filter.groups.map((group) => ({
