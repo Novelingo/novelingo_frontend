@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiThMenu } from "react-icons/ti";
 import logo from "../assets/logo.svg";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const links = [
@@ -12,7 +13,6 @@ const Navbar = () => {
   ];
   const [open, setOpen] = useState(false);
   const location = useLocation();
-
   return (
     <nav
       className={`bg-dark1 font-body z-30 w-full fixed top-0 left-0 text-white px-20 max-xl:px-5  `}
@@ -61,6 +61,12 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
+
+      {location.pathname === "/novels" && (
+        <div className="w-full h-16">
+          <SearchBar />
+        </div>
+      )}
     </nav>
   );
 };

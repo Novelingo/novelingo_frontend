@@ -11,8 +11,8 @@ interface NovelProps {
 }
 export default function NovelCard({
   tags,
-  title,
-  subtitle,
+  title = "Title of your novel",
+  subtitle = "Description of your novel",
   rating = 0,
   cover,
   onClick,

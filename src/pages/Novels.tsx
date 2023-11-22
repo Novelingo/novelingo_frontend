@@ -13,7 +13,6 @@ import AppButton from "../components/AppButton";
 import Loading from "../components/Loading";
 
 import { useQueryReducer } from "../hooks/query.hooks";
-import SearchBar from "../components/SearchBar";
 import { Button } from "flowbite-react";
 
 type IState = { [key: string]: string[] } & { page: number };
@@ -45,8 +44,6 @@ export default function Novels() {
 
   return (
     <div className="mt-3 md:px-20 px-5 md:py-20 py-10 flex flex-col justify-center">
-      <SearchBar />
-
       <div className="mt-6 py-10 flex flex-row  justify-center relative overflow-hidden ">
         <div className="flex flex-row h-full relative w-full justify-center">
           <div className="hidden md:flex w-52 relative">
@@ -122,7 +119,7 @@ export default function Novels() {
                         subtitle={novel.description}
                         rating={novel.rating}
                         tags={novel.tags}
-                        cover={bookcover}
+                        cover={novel.cover || bookcover}
                       />
                     </span>
                   ))}
