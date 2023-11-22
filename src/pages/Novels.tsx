@@ -14,6 +14,7 @@ import Loading from "../components/Loading";
 
 import { useQueryReducer } from "../hooks/query.hooks";
 import { Button } from "flowbite-react";
+import Skeleton from "react-loading-skeleton";
 
 type IState = { [key: string]: string[] } & { page: number };
 
@@ -48,15 +49,18 @@ export default function Novels() {
         <div className="flex flex-row h-full relative w-full justify-center">
           <div className="hidden md:flex w-52 relative">
             <div className="flex flex-col absolute left-0 overflow-y-auto max-h-full no-scrollbar ">
-              {filter.groups.map((group) => (
-                <Filter
-                  selectedIds={filters[group.key] || []}
-                  key={group.key}
-                  title={group.title}
-                  options={group.options}
-                  handleClick={(ids) => dispatch({ [group.key]: ids })}
-                />
-              ))}
+              {filter.groups.map(
+                (group) =>
+                  (
+                    <Filter
+                      selectedIds={filters[group.key] || []}
+                      key={group.key}
+                      title={group.title}
+                      options={group.options}
+                      handleClick={(ids) => dispatch({ [group.key]: ids })}
+                    />
+                  ) || <Skeleton />
+              )}
               <Button
                 className="m-1 bg-purple  md:w-40 p-4 h-9 bg-gradient-to-r from-purple to-dark2 hover:from-dark2 hover:to-purple  text-base text-white"
                 onClick={() => {

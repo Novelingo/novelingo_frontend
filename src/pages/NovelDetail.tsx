@@ -15,6 +15,7 @@ const defaultNovel: Novel = {
   tags: [],
   author: "",
   paragraphs: [],
+  cover: "",
 };
 export default function NovelDetail() {
   const { id } = useParams();
@@ -30,15 +31,15 @@ export default function NovelDetail() {
       <AppSection
         className="sticky flex flex-col items-center justify-center text-center"
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `url(${novel.cover || background})`,
           height: "50vh",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           maxWidth: "none",
         }}
       >
-        <TextTitle className="text-white">{novel.title}</TextTitle>
-        <p className="text-white mt-6 lg:px-24">{novel.description}</p>
+        <TextTitle className="text-white ">{novel.title}</TextTitle>
+        <p className="text-white mt-2 md:mt-6 lg:px-24">{novel.description}</p>
       </AppSection>
 
       <AppSection className="bg-darkest">
