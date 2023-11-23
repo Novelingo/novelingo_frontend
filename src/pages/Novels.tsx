@@ -8,13 +8,13 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
-import AppButton from "../components/AppButton";
 
 import Loading from "../components/Loading";
 
 import { useQueryReducer } from "../hooks/query.hooks";
-import { useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import SearchBar from "../components/SearchBar";
+import { setSearchValue } from "../features/searchSlice";
 
 type IState = { [key: string]: string[] } & { page: number; search: string };
 
@@ -34,7 +34,7 @@ export default function Novels() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const searchValue = useAppSelector((state) => state.search.searchValue);
-
+  const dispatchValue = useAppDispatch();
   const {
     data: { data: novels, filter, pageTotal } = {
       data: [],
@@ -74,9 +74,10 @@ export default function Novels() {
                   className="m-1 md:w-40 p-4 h-9 flex justify-center items-center rounded bg-light text-dark2 hover:bg-purple hover:text-white"
                   onClick={() => {
                     dispatch();
+                    dispatchValue(setSearchValue(""));
                   }}
                 >
-                  Reset
+                  Reset Filter
                 </button>
                 {filter.groups.map((group) => (
                   <Filter
@@ -91,12 +92,24 @@ export default function Novels() {
             </div>
             <div className="flex flex-col min-h-screen">
               <div className="self-center md:hidden">
-                <AppButton
-                  onClick={() => setSidebarOpen(!isSidebarOpen)}
-                  className="px-4 my-4 mt-8 text-xs py-2"
-                >
-                  Apply Filter
-                </AppButton>
+                <div>
+                  <button
+                    onClick={() => setSidebarOpen(!isSidebarOpen)}
+                    className="px-4 rounded bg-light mr-3 my-4 mt-8 text-xs text-dark2 py-2"
+                  >
+                    Apply Filter
+                  </button>
+                  <button
+                    onClick={() => {
+                      dispatch();
+                      dispatchValue(setSearchValue(""));
+                    }}
+                    className=" rounded outline -outline-offset-2 outline-light outline-2  text-light px-4 my-4 mt-8 text-xs py-2"
+                  >
+                    Reset Filter
+                  </button>
+                </div>
+
                 <div className="relative">
                   <Sidebar
                     reset={() => {

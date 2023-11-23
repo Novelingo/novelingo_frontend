@@ -1,4 +1,3 @@
-import { Button } from "flowbite-react";
 import React, { useState, ReactNode } from "react";
 import { FaChevronDown, FaChevronRight, FaTimes } from "react-icons/fa";
 
@@ -54,12 +53,12 @@ const Sidebar: React.FC<SidebarProps> = ({
               {activeIndex === index && section.component}
             </div>
           ))}
-          <Button
+          <button
             onClick={reset}
-            className=" absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-purple  md:w-40 p-4 h-9 bg-gradient-to-r from-purple to-dark2 hover:from-dark2 hover:to-purple  text-base text-white"
+            className=" absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded pb-8 px-5 pt-2 h-8 bg-gradient-to-r from-purple to-dark2 hover:from-dark2 hover:to-purple  text-base text-white"
           >
             Reset
-          </Button>
+          </button>
         </div>
       </div>
     </>

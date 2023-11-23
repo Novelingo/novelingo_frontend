@@ -41,7 +41,6 @@ const SearchBar: React.FC<SearchBar> = ({ onSubmit, onKeyDown }) => {
             onChange={(e) => {
               dispatchValue(setSearchValue(e.target.value));
             }}
-            type="search"
             id="default-search"
             className="block w-full border border-dark2 text-white focus:ring-light focus:border-light p-3 pl-10 placeholder:text-light md:text-base bg-dark2 rounded-lg shadow-sm focus:outline-none text-sm"
             placeholder="Search novels.."
@@ -49,7 +48,6 @@ const SearchBar: React.FC<SearchBar> = ({ onSubmit, onKeyDown }) => {
           />
           <button
             onClick={onSubmit}
-            type="submit"
             className="text-dark2 hover:text-white absolute bottom-1.5 end-2 md:bottom-2 bg-light hover:bg-purple rounded text-sm px-3 py-1.5 "
           >
             Search
