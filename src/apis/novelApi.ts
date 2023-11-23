@@ -20,6 +20,7 @@ export interface GetNovelsRequest {
   page: number;
   limit: number;
   filters: { [key: string]: string[] };
+  search: string;
 }
 
 // 1 create types for response and request
@@ -69,11 +70,12 @@ export const novelApi = createApi({
   }),
   endpoints: (builder) => ({
     getNovels: builder.query<GetNovelsResponse, GetNovelsRequest>({
-      query: ({ page, limit, filters }) => {
+      query: ({ page, limit, filters, search }) => {
         return {
           url: "/",
           params: {
             // query params
+            search,
             page,
             limit,
             ...filters,

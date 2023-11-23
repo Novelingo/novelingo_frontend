@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { TiThMenu } from "react-icons/ti";
 import logo from "../assets/logo.svg";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const links = [
@@ -37,7 +37,7 @@ const Navbar = () => {
         {open && (
           <div
             onClick={() => setOpen(!open)}
-            className={` bg-dark1/60 fixed top-0 left-0 w-96 h-full -z-10`}
+            className={` bg-dark1/60 fixed top-0 left-0 w-full h-full -z-10`}
           ></div>
         )}
         <ul
@@ -61,12 +61,6 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-
-      {location.pathname === "/novels" && (
-        <div className="w-full h-16">
-          <SearchBar />
-        </div>
-      )}
     </nav>
   );
 };

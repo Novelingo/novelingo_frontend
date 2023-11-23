@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       {isOpen && (
         <div
           onClick={onClose}
-          className={` bg-dark1/60 fixed top-0 left-0 w-96 h-full z-20`}
+          className={` bg-dark1/60 fixed top-0 left-0 w-full h-full z-20`}
         ></div>
       )}
 

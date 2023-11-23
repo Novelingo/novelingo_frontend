@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { novelApi } from "../apis/novelApi";
 import generateSlice from "../features/generateSlice";
+import searchSlice from "../features/searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
+    search: searchSlice,
     generate: generateSlice,
     [novelApi.reducerPath]: novelApi.reducer,
   },
