@@ -57,31 +57,34 @@ export default function NovelDetail() {
       <AppSection className="bg-darkest">
         <div className="text-light flex flex-wrap">
           {novel.paragraphs.map((paragraph) => (
-            <p
-              key={paragraph.id}
-              className={`${
-                window.innerHeight < 668 ? " text-sm" : "text-base"
-              } "text-light mb-3"`}
-            >
-              {paragraph.words.map((word) => {
-                const wordValue = word.word.trim();
-                return (
-                  <span
-                    onClick={() => {
-                      setSelectedWord(wordValue);
-                      setSelectedDef(word.definition);
-                      setShowModal(true);
-                    }}
-                    key={word.id}
-                    className={"cursor-pointer hover:text-white "}
-                  >
-                    {([".", ",", "?", "!", "'"].includes(wordValue)
-                      ? ""
-                      : " ") + wordValue}
-                  </span>
-                );
-              })}
-            </p>
+            <>
+              <p
+                key={paragraph.id}
+                className={`${
+                  window.innerHeight < 668 ? " text-sm" : "text-base"
+                } "text-light mb-3"`}
+              >
+                {paragraph.words.map((word) => {
+                  const wordValue = word.word.trim();
+                  return (
+                    <span
+                      onClick={() => {
+                        setSelectedWord(wordValue);
+                        setSelectedDef(word.definition);
+                        setShowModal(true);
+                      }}
+                      key={word.id}
+                      className={"cursor-pointer hover:text-white "}
+                    >
+                      {([".", ",", "?", "!", "'"].includes(wordValue)
+                        ? ""
+                        : " ") + wordValue}
+                    </span>
+                  );
+                })}
+              </p>
+              <br />
+            </>
           ))}
         </div>
       </AppSection>
